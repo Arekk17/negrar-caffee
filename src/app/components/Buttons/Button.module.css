@@ -1,0 +1,27 @@
+.button{
+    background-color: #B77E66;
+    border: none;
+    width: 330px;
+    height: 88px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 800;
+    border-radius: 10px;
+    cursor: pointer;
+}
+ 
+.button.clicked {
+    animation: pulse 0.3s ease-in-out;
+}
+  
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
