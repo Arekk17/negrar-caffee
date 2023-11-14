@@ -1,7 +1,7 @@
 .landing {
     position: relative;
     height: 100vh;
-    background-image: url('../../../assets/coffeeblur.png'); /* Zmień na właściwą ścieżkę do swojego obrazu tła */
+    background-image: url('../../../assets/coffeeblur.png');
     background-size: cover;
     background-position: center;
     color: #fff;
