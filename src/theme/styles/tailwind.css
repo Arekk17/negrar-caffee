@@ -1,0 +1,39 @@
+.clip-invisible {
+    clip: rect(0 0 0 0);
+  }
+  
+  .font {
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-family: Inter;
+  }
+  
+  .MarckScript {
+    font-family: Marck Script;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .fadeInAnimation {
+    animation-name: fadeIn;
+    animation-duration: 300ms;
+  }
+  .landingBackground {
+    background-image: url('../../assets/coffeeblur.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .navigationBackground {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bgnav.png');
+    background-size: cover;
+    background-position: center;
+  }
+  

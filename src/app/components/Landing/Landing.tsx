@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import styles from './Landing.module.css'
 import Button from '../Buttons/Button'
 
 const Landing = () => {
@@ -8,7 +7,7 @@ const Landing = () => {
     console.log('button')
   }
   return (
-    <div className='relative h-screen bg-landing bg-cover bg-center text-white flex justify-start items-center'>
+    <div className='landingBackground relative h-screen text-white flex justify-start items-center'>
       <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-30'></div>
       <div className='max-w-[643px] ml-[100px] z-10'>
         <h1 className='text-xl mb-4'>ŚWIEŻA KAWA O PORANKU</h1>

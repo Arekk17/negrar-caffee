@@ -1,12 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/components/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     colors: {
-      'brown-light': '#B77E66',
-      'brown': '#A0583C',
-      'brown-dark': '#835F50',
-      'white': '#EEEEEE',
+      brownLight: '#B77E66',
+      brown: '#A0583C',
+      brownDark: '#835F50',
+      white: '#EEEEEE',
+      black: '#000',
     },
     extend: {
       fontSize: {
@@ -15,9 +22,6 @@ module.exports = {
         m: '36px',
         l: '48px',
         xl: '64px',
-      },
-      backgroundImage: {
-        landing: "url('./src/assets/coffeeblur.png')",
       },
     },
   },

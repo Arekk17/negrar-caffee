@@ -3,7 +3,7 @@ import HomeLayout from './layout/HomeLayout/HomeLayout'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       <HomeLayout />
     </main>
   )

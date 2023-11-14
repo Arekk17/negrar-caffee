@@ -1,10 +1,11 @@
+'use client'
 import React, { MouseEventHandler, useState } from 'react'
 import styles from './Button.module.css'
 
 interface ButtonProps {
   label: string
   size?: 'small' | 'medium'
-  onClick: MouseEventHandler
+  onClick: any
 }
 
 const Button: React.FC<ButtonProps> = ({ label, onClick, size = 'medium' }) => {

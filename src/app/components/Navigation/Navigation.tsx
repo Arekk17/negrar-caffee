@@ -5,24 +5,20 @@ import logo from '@/assets/NEGRAR.png'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import styles from './Navigation.module.css'
-
 export const Navigation = () => {
   const pathname = usePathname()
-  console.log(pathname)
   const [isHome, setIsHome] = useState(false)
 
   useEffect(() => {
-    setIsHome(pathname === '/')
+    const home = pathname === '/'
+    setIsHome(home)
   }, [pathname])
-
-  const backgroundImage = isHome ? 'none' : `url('../../../assets/bgnav.png')`
-  const overlayClass = isHome ? 'transparent-background' : ''
 
   return (
     <nav
-      className={`absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-20 bg-cover bg-center text-white ${overlayClass}`}
-      style={{ backgroundImage }}
+      className={`absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-20 h-[100px] ${
+        isHome ? 'bg-transparent' : 'navigationBackground  text-white'
+      } `}
     >
       <div className='ml-[80px]'>
         <Image
