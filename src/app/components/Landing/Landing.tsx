@@ -8,11 +8,11 @@ const Landing = () => {
     console.log('button')
   }
   return (
-    <div className={styles.landing}>
-      <div className={styles.overlay}></div>
-      <div className={styles.content}>
-        <h1 className={styles.title}>ŚWIEŻA KAWA O PORANKU</h1>
-        <p className={styles.description}>
+    <div className='relative h-screen bg-landing bg-cover bg-center text-white flex justify-start items-center'>
+      <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-30'></div>
+      <div className='max-w-[643px] ml-[100px] z-10'>
+        <h1 className='text-xl mb-4'>ŚWIEŻA KAWA O PORANKU</h1>
+        <p className='text-s mb-[30px]'>
           Rozpocznij dzień od kawy. Wybierz aromatyczne doznania w naszym sklepie, gdzie świeżo palone ziarna spotykają się z Twoją pasją do
           wyjątkowych poranków
         </p>
