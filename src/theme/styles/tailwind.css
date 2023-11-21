@@ -9,19 +9,6 @@
     font-family: Inter;
   }
   
-  .MarckScript {
-    font-family: Marck Script;
-  }
-  
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
   .fadeInAnimation {
     animation-name: fadeIn;
     animation-duration: 300ms;
@@ -36,4 +23,24 @@
     background-size: cover;
     background-position: center;
   }
+  .aboutBackground {
+    background-image: url('../../assets/barist.png');
+    background-size: cover;
+    background-position: center;
+  }
   
+  .buttonClicked {
+    animation: pulse 0.3s ease-in-out;
+}
+  
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

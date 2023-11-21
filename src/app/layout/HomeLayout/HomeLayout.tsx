@@ -6,7 +6,7 @@ const HomeLayout = () => {
   return (
     <div>
       <Landing />
-      {/* <About /> */}
+      <About />
     </div>
   )
 }
