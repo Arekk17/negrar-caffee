@@ -1,10 +1,12 @@
 'use client'
 import React from 'react'
 import Button from '../Buttons/Button'
+import { useRouter } from 'next/navigation'
 
 const Landing = () => {
+  const router = useRouter()
   const handleClickButton = () => {
-    console.log('button')
+    router.push('/shop')
   }
   return (
     <div className='landingBackground relative h-screen text-white flex justify-start items-center'>

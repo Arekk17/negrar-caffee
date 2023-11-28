@@ -1,11 +1,11 @@
 'use client'
 import React, { useRef } from 'react'
-import Image from 'next/image'
 import { Paper, Typography, IconButton, Box } from '@mui/material'
 import Button from '../Buttons/Button'
 import { menuItem } from '../OurMenu/menuItem'
 import { LeftArrow } from '@/assets/icon/LeftArrow'
 import { RightArrow } from '@/assets/icon/RightArrow'
+import { ProductCard } from '../Card/ProductCard'
 
 export const CaffeeSlider = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -46,32 +46,13 @@ export const CaffeeSlider = () => {
           className='scroll-container'
         >
           {menuItem.map((item, index) => (
-            <Box
+            <ProductCard
               key={index}
-              className='mr-[40px] max-w-[260px] flex-shrink-0 relative'
-            >
-              <Paper
-                className='p-2 h-full bg-brownDark bg-opacity-90 text-white'
-                elevation={3}
-              >
-                <Image
-                  src={item.image}
-                  width={500}
-                  height={500}
-                  alt={item.name}
-                />
-                <Typography className='text-[25px]'>{item.name}</Typography>
-                <Typography className='text-[14px] text-cream'>{item.description}</Typography>
-                <div className='flex flex-row justify-evenly my-[10px] items-center'>
-                  <Typography>{item.price}</Typography>
-                  <Button
-                    className='w-[120px] py-[10px]'
-                    label='Zamowić'
-                    onClick={undefined}
-                  />
-                </div>
-              </Paper>
-            </Box>
+              name={item.name}
+              image={item.image}
+              price={item.price}
+              description={item.description}
+            />
           ))}
         </Box>
       </Box>

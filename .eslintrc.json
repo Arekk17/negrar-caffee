@@ -1,20 +1,10 @@
 {
-  "extends": [
-    "next",
-    "prettier",
-    "plugin:storybook/recommended"
-  ],
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "simple-import-sort"
-  ],
+  "extends": ["next", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "simple-import-sort"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "experimentalDecorators": true,
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
   },
   "rules": {
     "newline-per-chained-call": "off",
@@ -25,10 +15,7 @@
     "@typescript-eslint/semi": "off",
     "no-console": "off",
     "react/function-component-definition": "off",
-    "jsx-quotes": [
-      "error",
-      "prefer-single"
-    ],
+    "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-props-no-spreading": "off",
     "import/no-anonymous-default-export": "off",
     "jsx-a11y/label-has-associated-control": "off",
@@ -70,22 +57,15 @@
     "import/extensions": 0,
     "array-callback-return": "off",
     "no-return-assign": "off",
+
     "consistent-return": "off",
     "react/jsx-max-props-per-line": "off"
   },
   "overrides": [
     {
-      "files": [
-        "*.js",
-        "*.jsx",
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
       "rules": {
-        "comma-dangle": [
-          "error",
-          "always-multiline"
-        ],
+        "comma-dangle": ["error", "always-multiline"],
         "implicit-arrow-linebreak": "off",
         "simple-import-sort/imports": [
           "error",
