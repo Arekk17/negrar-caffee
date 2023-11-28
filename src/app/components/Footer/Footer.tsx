@@ -5,7 +5,7 @@ import logo from '@/assets/NEGRAR.png'
 
 export const Footer = () => {
   return (
-    <footer className='footerBackground w-full h-screen p-10 flex items-center justify-center flex-col'>
+    <footer className='footerBackground w-full h-screen p-10 flex items-center justify-center flex-col max-h-[700px]'>
       <div className='flex justify-around items-center flex-wrap gap-10 text-white  w-full'>
         <div className='flex flex-col space-y-4'>
           <Link

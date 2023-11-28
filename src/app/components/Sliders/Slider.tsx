@@ -18,7 +18,6 @@ export const CaffeeSlider = () => {
       scrollContainerRef.current.scrollBy({ left: scrollDirection, behavior: 'smooth' })
     }
   }
-  console.log(menuItem)
 
   return (
     <>
