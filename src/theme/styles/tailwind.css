@@ -44,6 +44,12 @@
     background-size: cover;
     background-position: center;
   }
+  .footerBackground {
+    position: relative;
+    background-image: linear-gradient(rgba(29, 23, 20, 0.6), rgba(29, 23, 20, 0.6)), url('../../assets/footer.png');
+    background-size: cover;
+    background-position: center;
+}
   
   .buttonClicked {
     animation: pulse 0.3s ease-in-out;

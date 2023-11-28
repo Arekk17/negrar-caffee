@@ -4,6 +4,7 @@ import React from 'react'
 import TimeOpen from '@/app/components/TimeOpen/TimeOpen'
 import OurMenu from '@/app/components/OurMenu/OurMenu'
 import { Opinion } from '@/app/components/Opinions/Opinion'
+import { Map } from '@/app/components/Map/Map'
 
 const HomeLayout = () => {
   return (
@@ -13,6 +14,7 @@ const HomeLayout = () => {
       <TimeOpen />
       <OurMenu />
       <Opinion />
+      <Map />
     </div>
   )
 }
