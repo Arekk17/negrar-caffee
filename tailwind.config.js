@@ -11,9 +11,11 @@ module.exports = {
     colors: {
       brownLight: '#B77E66',
       brown: '#A0583C',
-      brownDark: '#835F50',
+      brownDark: '#734A39',
       white: '#EEEEEE',
       black: '#000',
+      cream: '#FFFADA',
+      brownTransparent: 'rgba(34, 27, 24, 0.6)',
     },
     extend: {
       fontSize: {
