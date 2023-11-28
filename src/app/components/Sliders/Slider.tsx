@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef } from 'react'
+import Image from 'next/image'
 import { Paper, Typography, IconButton, Box } from '@mui/material'
 import Button from '../Buttons/Button'
 import { menuItem } from '../OurMenu/menuItem'
@@ -17,6 +18,7 @@ export const CaffeeSlider = () => {
       scrollContainerRef.current.scrollBy({ left: scrollDirection, behavior: 'smooth' })
     }
   }
+  console.log(menuItem)
 
   return (
     <>
@@ -53,6 +55,12 @@ export const CaffeeSlider = () => {
                 className='p-2 h-full bg-brownDark bg-opacity-90 text-white'
                 elevation={3}
               >
+                <Image
+                  src={item.image}
+                  width={500}
+                  height={500}
+                  alt={item.name}
+                />
                 <Typography className='text-[25px]'>{item.name}</Typography>
                 <Typography className='text-[14px] text-cream'>{item.description}</Typography>
                 <div className='flex flex-row justify-evenly my-[10px] items-center'>

@@ -39,6 +39,11 @@
     background-size: cover;
     background-position: center;
   }
+  .opinionBackground {
+    background-image: url('../../assets/opinionbg.png');
+    background-size: cover;
+    background-position: center;
+  }
   
   .buttonClicked {
     animation: pulse 0.3s ease-in-out;

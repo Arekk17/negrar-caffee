@@ -3,6 +3,7 @@ import Landing from '../../components/Landing/Landing'
 import React from 'react'
 import TimeOpen from '@/app/components/TimeOpen/TimeOpen'
 import OurMenu from '@/app/components/OurMenu/OurMenu'
+import { Opinion } from '@/app/components/Opinions/Opinion'
 
 const HomeLayout = () => {
   return (
@@ -11,6 +12,7 @@ const HomeLayout = () => {
       <About />
       <TimeOpen />
       <OurMenu />
+      <Opinion />
     </div>
   )
 }
