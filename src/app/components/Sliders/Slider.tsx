@@ -54,12 +54,14 @@ export const CaffeeSlider = () => {
             >
               <Typography className='text-[25px]'>{item.name}</Typography>
               <Typography className='text-[14px] text-cream'>{item.description}</Typography>
-              <Typography>{item.price}</Typography>
-              <Button
-                size='small'
-                label='Zamowić'
-                onClick={undefined}
-              />
+              <div className='flex flex-row justify-evenly my-[10px] items-center'>
+                <Typography>{item.price}</Typography>
+                <Button
+                  className='w-[120px] py-[10px]'
+                  label='Zamowić'
+                  onClick={undefined}
+                />
+              </div>
             </Paper>
           </Box>
         ))}

@@ -14,7 +14,7 @@ const About = () => {
           Your best local coffee. In addition to delicious sandwiches and cakes and hot dish of the day,
         </span>
         <Button
-          size='small'
+          className='w-[180px] py-[10px] px-[40px]'
           label={'View more'}
           onClick={handleClickButton}
         />

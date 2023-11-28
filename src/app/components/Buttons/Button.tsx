@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 interface ButtonProps {
   label: string
-  size?: 'small' | 'medium'
+  className: any
   onClick: any
 }
-const Button: React.FC<ButtonProps> = ({ label, onClick, size = 'medium' }) => {
+const Button: React.FC<ButtonProps> = ({ label, onClick, className }) => {
   const [isClicked, setIsClicked] = useState(false)
 
   const handleButtonClick = (event: React.MouseEvent) => {
@@ -19,10 +19,9 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, size = 'medium' }) => {
     }
   }
 
-  const buttonClass = `bg-[#B77E66] border-none text-white rounded-[10px] cursor-pointer 
+  const buttonClass = `${className} bg-brown border-none text-white rounded-[10px] cursor-pointer 
     ${isClicked ? 'clicked-animation-class' : ''} 
-    ${size === 'small' ? 'w-[180px] h-[44px] text-[15px] font-normal' : 'w-[330px] h-[88px] text-[24px] font-bold'}`
-
+    `
   return (
     <button
       className={buttonClass}
