@@ -4,15 +4,16 @@ import React from 'react'
 import Button from '../Buttons/Button'
 
 interface ICard {
+  id: any
   name: string
   image: any
   price: any
   description: string
 }
 
-export const ProductCard: React.FC<ICard> = ({ name, image, description, price }) => {
-  const handleOrder = (name: string) => {
-    console.log(name)
+export const ProductCard: React.FC<ICard> = ({ id, name, image, description, price }) => {
+  const handleOrder = () => {
+    console.log(`name: ${name} id: ${id} `)
   }
   return (
     <Box className='mr-[40px] max-w-[260px] flex-shrink-0 relative'>
@@ -33,7 +34,7 @@ export const ProductCard: React.FC<ICard> = ({ name, image, description, price }
           <Button
             className='w-[120px] py-[10px]'
             label='Zamowić'
-            onClick={() => handleOrder(name)}
+            onClick={() => handleOrder()}
           />
         </div>
       </Paper>

@@ -48,6 +48,7 @@ export const CaffeeSlider = () => {
           {menuItem.map((item, index) => (
             <ProductCard
               key={index}
+              id={item.id}
               name={item.name}
               image={item.image}
               price={item.price}
