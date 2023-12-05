@@ -1,7 +1,6 @@
 'use client'
 import React, { useRef } from 'react'
-import { Paper, Typography, IconButton, Box } from '@mui/material'
-import Button from '../Buttons/Button'
+import { IconButton, Box } from '@mui/material'
 import { menuItem } from '../OurMenu/menuData'
 import { LeftArrow } from '@/assets/Icon/LeftArrow'
 import { RightArrow } from '@/assets/Icon/RightArrow'
@@ -45,9 +44,9 @@ export const CaffeeSlider = () => {
           overflow='hidden'
           className='scroll-container'
         >
-          {menuItem.map((item, index) => (
+          {menuItem.map((item) => (
             <ProductCard
-              key={index}
+              key={item.name}
               id={item.id}
               name={item.name}
               image={item.image}

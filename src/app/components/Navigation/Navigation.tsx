@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import logo from '@/assets/NEGRAR.png'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import Button from '../Buttons/Button'
 
 export const Navigation = () => {
   const pathname = usePathname()
+  const router = useRouter()
   const [isHome, setIsHome] = useState(false)
-
+  const handleLogIn = () => router.push('/signIn')
   useEffect(() => {
-    const home = pathname === '/'
+    const home = pathname === '/home'
     setIsHome(home)
   }, [pathname])
 
@@ -59,6 +61,11 @@ export const Navigation = () => {
         >
           Lokalizacja
         </Link>
+        <Button
+          label={'Logowanie'}
+          className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
+          onClick={handleLogIn}
+        />
       </div>
     </nav>
   )

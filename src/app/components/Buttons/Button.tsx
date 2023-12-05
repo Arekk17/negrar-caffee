@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, className }) => {
     }
   }
 
-  const buttonClass = `${className} bg-brown border-none text-white rounded-[10px] cursor-pointer 
+  const buttonClass = `${className} bg-brown border-none rounded-[10px] cursor-pointer 
     ${isClicked ? 'clicked-animation-class' : ''} 
     `
   return (
