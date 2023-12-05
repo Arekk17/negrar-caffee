@@ -1,3 +1,8 @@
+@import '../theme/styles/tailwind.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   box-sizing: border-box;
   padding: 0;
