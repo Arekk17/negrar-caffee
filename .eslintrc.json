@@ -57,7 +57,6 @@
     "import/extensions": 0,
     "array-callback-return": "off",
     "no-return-assign": "off",
-
     "consistent-return": "off",
     "react/jsx-max-props-per-line": "off"
   },
