@@ -16,6 +16,7 @@ module.exports = {
       black: '#000',
       cream: '#FFFADA',
       green: '#54DD8B',
+      grayDark: 'rgba(0,0,0, 0.7)',
       brownTransparent: 'rgba(34, 27, 24, 0.6)',
     },
     extend: {

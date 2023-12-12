@@ -1,32 +1,41 @@
+'use client'
+import { GoogleIcon } from '@/assets/Icon/GoogleIcon'
 import React, { useState } from 'react'
+
 interface ButtonProps {
   label: string
-  className: any
-  onClick: any
+  variant: 'classic' | 'google'
+  className?: string
+  onClick?: any
 }
-const Button: React.FC<ButtonProps> = ({ label, onClick, className }) => {
+
+const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick }) => {
   const [isClicked, setIsClicked] = useState(false)
 
-  const handleButtonClick = (event: React.MouseEvent) => {
+  const handleButtonClick = () => {
     setIsClicked(true)
-
     setTimeout(() => {
       setIsClicked(false)
-    }, 500)
-
+    }, 100)
     if (onClick) {
-      onClick(event)
+      onClick()
     }
   }
 
-  const buttonClass = `${className} bg-brown border-none rounded-[10px] cursor-pointer 
-    ${isClicked ? 'clicked-animation-class' : ''} 
-    `
   return (
     <button
-      className={buttonClass}
+      className={`rounded-[10px] cursor-pointer ${className} ${isClicked ? 'scale-95' : ''} 
+        ${variant === 'google' ? 'bg-grayDark text-white flex flex-row items-center gap-[30px]' : 'bg-brown text-black'}
+        transition-transform duration-100 ease-out
+      `}
+      tabIndex={0}
       onClick={handleButtonClick}
     >
+      {variant === 'google' && (
+        <span className='ml-3'>
+          <GoogleIcon />
+        </span>
+      )}
       {label}
     </button>
   )

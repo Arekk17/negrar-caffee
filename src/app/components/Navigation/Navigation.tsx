@@ -10,7 +10,7 @@ export const Navigation = () => {
   const pathname = usePathname()
   const router = useRouter()
   const [isHome, setIsHome] = useState(false)
-  const handleLogIn = () => router.push('/signIn')
+  const handleLogIn = () => router.push('/signin')
   useEffect(() => {
     const home = pathname === '/home'
     setIsHome(home)
@@ -65,6 +65,7 @@ export const Navigation = () => {
           label={'Logowanie'}
           className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
           onClick={handleLogIn}
+          variant={'classic'}
         />
       </div>
     </nav>

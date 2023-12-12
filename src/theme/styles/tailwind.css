@@ -19,7 +19,7 @@
     background-position: center;
   }
   .navigationBackground {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bgnav.png');
+    background-image: linear-gradient(rgba(30, 21, 17, 0.9), rgba(30, 21, 17, 0.9)), url('../../assets/bgnav.png');
     background-size: cover;
     background-position: center;
   }
@@ -49,19 +49,8 @@
     background-size: cover;
     background-position: center;
 }
-
-  .buttonClicked {
-    animation: pulse 0.3s ease-in-out;
+.signinBackground {
+  background-image: url('../../assets/signinbg.png');
+  background-size: cover;
+  background-position: center;
 }
-
-@keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(0.95);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
