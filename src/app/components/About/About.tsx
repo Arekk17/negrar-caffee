@@ -17,6 +17,7 @@ const About = () => {
           className='w-[180px] py-[10px] px-[40px]'
           label={'View more'}
           onClick={handleClickButton}
+          variant={'classic'}
         />
       </div>
     </div>
