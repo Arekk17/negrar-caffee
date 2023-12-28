@@ -1,8 +1,6 @@
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail} from "firebase/auth"
 import { auth, firestore, googleProvider } from "./firebase"
 import { doc, getDoc } from "firebase/firestore"
-import firebase from "firebase/compat/app"
-import { error } from "console"
 
 export const fetchUserData = async (userId: string) => {
   const usersDocRef = doc(firestore, 'users', userId)
