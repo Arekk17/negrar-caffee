@@ -1,8 +1,9 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import Button from '../Buttons/Button'
+import { signInWithEmail } from '@/api/authFirebase'
 interface FormData {
   email: string
   password: string
@@ -14,8 +15,14 @@ export const SignInForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>()
-  const onSubmit = (data: FormData) => {
-    console.log(data)
+  const [loginErrors, setLoginErrors] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const onSubmit = async (data: FormData) => {
+    try {
+      await signInWithEmail(data.email, data.password, setLoginErrors, setIsLoggedIn)
+    } catch (error) {
+      console.error('Login error:', error)
+    }
   }
   const handleForgetPassword = () => {
     console.log('forget password')

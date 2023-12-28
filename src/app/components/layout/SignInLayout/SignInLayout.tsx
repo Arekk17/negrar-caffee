@@ -1,9 +1,19 @@
+'use client'
 import React from 'react'
 import { SignInForm } from '../../Form/SignInForm'
 import Button from '../../Buttons/Button'
 import Link from 'next/link'
+import { signInWithGoogle } from '@/api/authFirebase'
 
 export const SignInLayout = () => {
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle()
+      console.log('login')
+    } catch (error) {
+      console.error('Unexpected error:', error)
+    }
+  }
   return (
     <div className='w-full h-screen flex items-center justify-center signinBackground'>
       <SignInForm />
@@ -21,6 +31,7 @@ export const SignInLayout = () => {
           label={'Zaloguj się przez Google'}
           className='p-1'
           variant={'google'}
+          onClick={handleGoogleSignIn}
         />
       </div>
     </div>
