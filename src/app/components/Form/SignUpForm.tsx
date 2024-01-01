@@ -67,7 +67,7 @@ export const SignUpForm = () => {
           />
         </div>
       </div>
-      <div className='mb-4 flex space-x-4'>
+      <div className='mb-4 flex space-x-4 relative'>
         <div className='flex-1'>
           <Controller
             name='phoneNu'
@@ -78,7 +78,8 @@ export const SignUpForm = () => {
             render={({ field }) => (
               <TextInputWithLabel
                 label='Numer telefonu'
-                type={'text'}
+                type={'tel'}
+                style='pl-[45px]'
                 placeholder={'podaj numer telefonu'}
                 register={register('phoneNu')}
                 {...field}
