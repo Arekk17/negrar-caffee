@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react'
 export type TTextInputWithLabel = {
   type: string
   label?: string
-  placeholder: string
+  placeholder?: string
   errorMessage?: string
   register: any
 }

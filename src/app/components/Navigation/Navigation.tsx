@@ -10,7 +10,7 @@ export const Navigation = () => {
   const pathname = usePathname()
   const router = useRouter()
   const [isHome, setIsHome] = useState(false)
-  const handleLogIn = () => router.push('/signin')
+  const handleLogIn = () => router.push('/home/signin')
   useEffect(() => {
     const home = pathname === '/home'
     setIsHome(home)
@@ -32,31 +32,31 @@ export const Navigation = () => {
       </div>
       <div className='flex items-center justify-between gap-[46px] mr-[126px]'>
         <Link
-          href='/'
+          href='/home'
           className='text-white no-underline'
         >
           Home
         </Link>
         <Link
-          href='/about'
+          href='/home/about'
           className='text-white no-underline'
         >
           O nas
         </Link>
         <Link
-          href='/menu'
+          href='/home/menu'
           className='text-white no-underline'
         >
           Menu
         </Link>
         <Link
-          href='/product'
+          href='/home/product'
           className='text-white no-underline'
         >
           Produkty
         </Link>
         <Link
-          href='/localization'
+          href='/home/localization'
           className='text-white no-underline'
         >
           Lokalizacja

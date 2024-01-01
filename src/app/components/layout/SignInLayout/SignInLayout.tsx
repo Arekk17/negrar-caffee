@@ -3,9 +3,11 @@ import React from 'react'
 import { SignInForm } from '../../Form/SignInForm'
 import Button from '../../Buttons/Button'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { signInWithGoogle } from '@/api/authFirebase'
 
 export const SignInLayout = () => {
+  const router = useRouter()
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle()
@@ -14,6 +16,8 @@ export const SignInLayout = () => {
       console.error('Unexpected error:', error)
     }
   }
+  const handleSignUp = () => router.push('/home/signup')
+
   return (
     <div className='w-full h-screen flex items-center justify-center signinBackground'>
       <SignInForm />
@@ -25,6 +29,7 @@ export const SignInLayout = () => {
           label={'ZAŁÓŻ KONTO'}
           className='text-white w-[330px] h-[45px]'
           variant={'classic'}
+          onClick={handleSignUp}
         />
         <Link href={'/'}>Dlaczego warto mieć konto?</Link>
         <Button

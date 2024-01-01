@@ -1,6 +1,6 @@
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail} from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, createUserWithEmailAndPassword} from "firebase/auth"
 import { auth, firestore, googleProvider } from "./firebase"
-import { doc, getDoc } from "firebase/firestore"
+import { doc, getDoc, setDoc } from "firebase/firestore"
 
 export const fetchUserData = async (userId: string) => {
   const usersDocRef = doc(firestore, 'users', userId)
@@ -69,3 +69,17 @@ export const signInWithEmail = (
         throw error;
       });
   };
+
+
+export const signUpWithEmail = (name: string, email: string, phoneNu: string, password: string) => {
+  return createUserWithEmailAndPassword(auth, email, password)
+  .then(async({user}) => {
+    const usersDocRef = doc(firestore, 'users', user.uid);
+    await setDoc(usersDocRef, {name, email, phoneNu})
+    return user
+  })
+  .catch((error) => {
+    console.error('Error creating user:', error)
+    throw error
+  })
+}
