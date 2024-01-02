@@ -1,9 +1,9 @@
-import { SignInLayout } from '../../components/layout/SignInLayout/SignInLayout'
+import { SignUpForm } from '@/app/components/Form/SignUpForm'
 
 export default function page() {
   return (
-    <main>
-      <h1>x</h1>
+    <main className='h-screen flex items-center justify-center signinBackground '>
+      <SignUpForm />
     </main>
   )
 }

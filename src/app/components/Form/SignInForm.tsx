@@ -4,6 +4,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import Button from '../Buttons/Button'
 import { signInWithEmail } from '@/api/authFirebase'
+import { useRouter } from 'next/navigation'
 interface FormData {
   email: string
   password: string
@@ -17,9 +18,11 @@ export const SignInForm = () => {
   } = useForm<FormData>()
   const [loginErrors, setLoginErrors] = useState('')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const router = useRouter()
   const onSubmit = async (data: FormData) => {
     try {
       await signInWithEmail(data.email, data.password, setLoginErrors, setIsLoggedIn)
+      router.push('/home')
     } catch (error) {
       console.error('Login error:', error)
     }
