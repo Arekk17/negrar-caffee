@@ -5,12 +5,16 @@ import logo from '@/assets/NEGRAR.png'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import Button from '../Buttons/Button'
+import { useSelector } from 'react-redux'
 
 export const Navigation = () => {
   const pathname = usePathname()
   const router = useRouter()
   const [isHome, setIsHome] = useState(false)
-  const handleLogIn = () => router.push('/home/signin')
+  const user = useSelector((state: any) => state.userSlice.user)
+  console.log(user)
+  const handleClickButton = () => (user ? router.push('/home/account') : router.push('/home/signin'))
+  const handleLogOut = () => console.log('x')
   useEffect(() => {
     const home = pathname === '/home'
     setIsHome(home)
@@ -62,11 +66,19 @@ export const Navigation = () => {
           Lokalizacja
         </Link>
         <Button
-          label={'Logowanie'}
+          label={user ? 'Konto' : 'logowanie'}
           className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
-          onClick={handleLogIn}
+          onClick={handleClickButton}
           variant={'classic'}
         />
+        {user && (
+          <Button
+            label='Wyloguj'
+            className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
+            onClick={handleLogOut}
+            variant={'classic'}
+          />
+        )}
       </div>
     </nav>
   )
