@@ -29,7 +29,7 @@ const NoAccountSection = () => {
       <Link href={'/'}>Dlaczego warto mieć konto?</Link>
       <Button
         label={'Zaloguj się przez Google'}
-        className='p-1'
+        className='px-8 py-1'
         variant={'google'}
         onClick={handleGoogleSignIn}
       />

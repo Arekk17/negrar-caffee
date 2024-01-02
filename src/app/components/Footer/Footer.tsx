@@ -10,7 +10,7 @@ export const Footer = () => {
       <div className='flex justify-around items-center flex-wrap gap-10 text-white  w-full'>
         <div className='flex flex-col space-y-4'>
           <Link
-            href='/'
+            href='/home'
             className='text-white no-underline'
           >
             Home
@@ -42,7 +42,7 @@ export const Footer = () => {
         </div>
         <div className='flex flex-col space-y-4'>
           <p>Kontakt</p>
-          <p>STRZEGOMSKA, WROCŁAW</p>
+          <p>Rynek, WROCŁAW</p>
           <p>Tel: 000 000 000</p>
         </div>
         <div>
@@ -54,7 +54,7 @@ export const Footer = () => {
           />
         </div>
       </div>
-      <div className='text-center text-white text-sm mt-10'>© 2023 Bartonsuk Limited. All Rights Reserved.</div>
+      <div className='text-center text-white text-sm mt-10'>© 2023 NegrarCoffe. All Rights Reserved.</div>
     </footer>
   )
 }

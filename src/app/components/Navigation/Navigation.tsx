@@ -33,20 +33,16 @@ export const Navigation = () => {
       } `}
     >
       <div className='ml-[80px]'>
-        <Image
-          src={logo}
-          width={146}
-          height={88}
-          alt='logo'
-        />
+        <Link href='/home'>
+          <Image
+            src={logo}
+            width={146}
+            height={88}
+            alt='logo'
+          />
+        </Link>
       </div>
       <div className='flex items-center justify-between gap-[46px] mr-[126px]'>
-        <Link
-          href='/home'
-          className='text-white no-underline'
-        >
-          Home
-        </Link>
         <Link
           href='/home/about'
           className='text-white no-underline'
