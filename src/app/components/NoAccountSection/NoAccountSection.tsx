@@ -10,6 +10,7 @@ const NoAccountSection = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle()
+      router.push('/home')
       console.log('login')
     } catch (error) {
       console.error('Unexpected error:', error)
