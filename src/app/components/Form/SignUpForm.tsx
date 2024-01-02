@@ -28,16 +28,12 @@ export const SignUpForm = () => {
     const { name, email, phoneNu, password } = data
 
     try {
-      await signUpWithEmail(name, email, phoneNu, password)
+      await signUpWithEmail(name, email, phoneNu, password, setLoginErrors)
       router.push('/home/signin')
       reset()
     } catch (error: any) {
-      if (error.code === 'auth/email-already-in-use') {
-        setLoginErrors('Email is already in use. Please choose another email.')
-      } else {
-        setLoginErrors('Error during registration. Please try again.')
-        console.error(error)
-      }
+      setLoginErrors('Error during registration. Please try again.')
+      console.error(error)
     }
   }
 

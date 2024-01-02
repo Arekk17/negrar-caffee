@@ -1,6 +1,8 @@
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, createUserWithEmailAndPassword} from "firebase/auth"
+import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail, createUserWithEmailAndPassword} from "firebase/auth"
 import { auth, firestore, googleProvider } from "./firebase"
 import { doc, getDoc, setDoc } from "firebase/firestore"
+import { loginUser } from "@/store/authSlice"
+import { store } from "@/store/store"
 
 export const fetchUserData = async (userId: string) => {
   const usersDocRef = doc(firestore, 'users', userId)
@@ -18,6 +20,8 @@ export const signInWithEmail = (
     .then(async ({ user }) => {
         const token = await user.getIdToken()
         localStorage.setItem('token', token)
+        const userData = await fetchUserData(user.uid)
+        store.dispatch(loginUser(userData))
         setIsLoggedIn(true)
     })
     .catch(({ code }) => {
@@ -71,15 +75,19 @@ export const signInWithEmail = (
   };
 
 
-export const signUpWithEmail = (name: string, email: string, phoneNu: string, password: string) => {
+export const signUpWithEmail = (name: string, email: string, phoneNu: string, password: string, setLoginErrors: (n: string) => void,) => {
   return createUserWithEmailAndPassword(auth, email, password)
   .then(async({user}) => {
     const usersDocRef = doc(firestore, 'users', user.uid);
-    await setDoc(usersDocRef, {name, email, phoneNu})
+    await setDoc(usersDocRef, {id: user.uid, name, email, phoneNu})
     return user
   })
-  .catch((error) => {
-    console.error('Error creating user:', error)
-    throw error
+  .catch((code) => {
+    switch (code){
+      case 'auth/weak-password':
+        setLoginErrors('The password is too weak. Please choose a stronger password.')
+      case 'auth/email-already-in-use':
+        setLoginErrors('Email is already in use. Please choose another email.')
+    }
   })
 }
