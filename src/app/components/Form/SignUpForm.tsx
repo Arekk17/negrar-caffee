@@ -46,6 +46,7 @@ export const SignUpForm = () => {
           <Controller
             name='name'
             control={control}
+            defaultValue=''
             rules={{
               required: true,
             }}
@@ -64,6 +65,7 @@ export const SignUpForm = () => {
           <Controller
             name='email'
             control={control}
+            defaultValue=''
             rules={{
               required: true,
             }}
@@ -84,6 +86,7 @@ export const SignUpForm = () => {
           <Controller
             name='phoneNu'
             control={control}
+            defaultValue=''
             rules={{
               required: true,
             }}
@@ -103,6 +106,7 @@ export const SignUpForm = () => {
           <Controller
             name='password'
             control={control}
+            defaultValue=''
             rules={{
               required: true,
             }}

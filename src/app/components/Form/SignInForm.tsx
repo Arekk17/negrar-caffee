@@ -37,6 +37,7 @@ export const SignInForm = () => {
       <div className='mb-4'>
         <Controller
           name='email'
+          defaultValue=''
           control={control}
           rules={{
             required: true,
@@ -55,6 +56,7 @@ export const SignInForm = () => {
       <div className='mb-4'>
         <Controller
           name='password'
+          defaultValue=''
           control={control}
           rules={{
             required: true,
