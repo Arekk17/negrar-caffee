@@ -5,7 +5,6 @@ import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import Button from '../Buttons/Button'
 import { signInWithEmail } from '@/api/authFirebase'
 import { useRouter } from 'next/navigation'
-import { useSelector } from 'react-redux'
 interface FormData {
   email: string
   password: string
@@ -28,12 +27,9 @@ export const SignInForm = () => {
       console.error('Login error:', error)
     }
   }
-  const handleForgetPassword = () => {
-    console.log('forget password')
-  }
+
   return (
-    <div className='w-[400px]'>
-      <h2 className='text-m text-center'>MAM JUZ KONTA</h2>
+    <>
       <div className='mb-4'>
         <Controller
           name='email'
@@ -75,17 +71,9 @@ export const SignInForm = () => {
       <Button
         label={'Zaloguj się'}
         variant={'classic'}
-        className='w-full h-[45px] text-white'
+        className='w-full h-[45px] text-white mb-4'
         onClick={handleSubmit(onSubmit)}
       />
-      <div className='flex items-center justify-center'>
-        <p
-          className='text-grayDark cursor-pointer'
-          onClick={handleForgetPassword}
-        >
-          Zapomniałeś hasła?
-        </p>
-      </div>
-    </div>
+    </>
   )
 }

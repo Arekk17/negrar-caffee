@@ -5,25 +5,31 @@ import logo from '@/assets/NEGRAR.png'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import Button from '../Buttons/Button'
-import { useSelector } from 'react-redux'
+import { signOutUser } from '@/api/authFirebase'
 
 export const Navigation = () => {
   const pathname = usePathname()
   const router = useRouter()
   const [isHome, setIsHome] = useState(false)
-  const user = useSelector((state: any) => state.userSlice.user)
-  console.log(user)
-  const handleClickButton = () => (user ? router.push('/home/account') : router.push('/home/signin'))
-  const handleLogOut = () => console.log('x')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  const handleLogIn = () => router.push('/home/signin')
+  const handleLogOut = () => {
+    signOutUser()
+    setIsAuthenticated((prevState) => !prevState)
+  }
+
   useEffect(() => {
     const home = pathname === '/home'
     setIsHome(home)
+    const userToken = localStorage.getItem('token')
+    setIsAuthenticated(!!userToken)
   }, [pathname])
 
   return (
     <nav
       className={`absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-20 h-[100px] ${
-        isHome ? 'bg-transparent' : 'navigationBackground  text-white'
+        isHome ? 'bg-transparent' : 'navigationBackground text-white'
       } `}
     >
       <div className='ml-[80px]'>
@@ -65,17 +71,26 @@ export const Navigation = () => {
         >
           Lokalizacja
         </Link>
-        <Button
-          label={user ? 'Konto' : 'logowanie'}
-          className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
-          onClick={handleClickButton}
-          variant={'classic'}
-        />
-        {user && (
+        {isAuthenticated ? (
+          <>
+            <Link
+              href='/home/account'
+              className='text-white no-underline'
+            >
+              Konto
+            </Link>
+            <Button
+              label={'Wyloguj'}
+              className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
+              onClick={handleLogOut}
+              variant={'classic'}
+            />
+          </>
+        ) : (
           <Button
-            label='Wyloguj'
+            label={'Logowanie'}
             className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
-            onClick={handleLogOut}
+            onClick={handleLogIn}
             variant={'classic'}
           />
         )}

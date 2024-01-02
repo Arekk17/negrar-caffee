@@ -1,7 +1,7 @@
-import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail, createUserWithEmailAndPassword} from "firebase/auth"
+import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail, createUserWithEmailAndPassword, signOut} from "firebase/auth"
 import { auth, firestore, googleProvider } from "./firebase"
 import { doc, getDoc, setDoc } from "firebase/firestore"
-import { loginUser } from "@/store/authSlice"
+import { loggoutUser, loginUser } from "@/store/authSlice"
 import { store } from "@/store/store"
 
 export const fetchUserData = async (userId: string) => {
@@ -54,6 +54,18 @@ export const signInWithEmail = (
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
+      const token = await user.getIdToken()
+      localStorage.setItem('token', token)
+      const usersDocRef = doc(firestore, 'users', user.uid);
+      const userData = await getDoc(usersDocRef);
+      store.dispatch(loginUser)
+      if(!userData.exists()){
+        await setDoc(usersDocRef, {
+          id: user.uid,
+          name: user.displayName || '',
+          email: user.email || ''
+        })
+      }
       console.log('Zalogowano przez Google:', user);
       return user;
     } catch (error) {
@@ -91,3 +103,15 @@ export const signUpWithEmail = (name: string, email: string, phoneNu: string, pa
     }
   })
 }
+
+export const signOutUser = async () => {
+  try {
+    await signOut(auth);
+    localStorage.removeItem('token');
+    store.dispatch(loggoutUser());
+    console.log('Użytkownik został wylogowany');
+  } catch (error) {
+    console.error('Błąd podczas wylogowywania:', error);
+    throw error;
+  }
+};
