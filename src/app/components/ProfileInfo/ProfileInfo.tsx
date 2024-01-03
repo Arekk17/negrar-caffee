@@ -1,15 +1,16 @@
+'use client'
 import React, { useEffect, useState } from 'react'
 import { fetchUserData } from '@/api/authFirebase'
-import { useForm } from 'react-hook-form'
-import ProfilePersonalInfo from './ProfilePersonalInfo'
-import ProfileBillingAddress from './ProfileBillingAddress'
-import { editUserData } from '@/api/profileOperation'
 import { useDispatch, useSelector } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import { ProfilePersonalInfo } from './ProfilePersonalInfo'
+import { ProfileBillingAddress } from './ProfileBillingAddress'
+import { editUserData } from '@/api/profileOperation'
 import { editUser, userInfo } from '@/store/authSlice'
 
-const ProfileInfo = () => {
+export const ProfileInfo = () => {
   const dispatch = useDispatch()
-  const userId = localStorage.getItem('token') as string | null
+  const userId = typeof window !== 'undefined' ? (localStorage.getItem('token') as string | null) : null
   const userData = useSelector((state: any) => state.userSlice.userInfo)
   const [editingSection, setEditingSection] = useState<string | null>(null)
   const { control, handleSubmit, setValue, register } = useForm()
@@ -80,5 +81,3 @@ const ProfileInfo = () => {
     </div>
   )
 }
-
-export default ProfileInfo

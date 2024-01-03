@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import { EditIcon } from '@/assets/Icon/EditIcon'
 
-const ProfileBillingAddress = ({ userData, editingSection, handleEditClick, register, control, setValue }: any) => {
+export const ProfileBillingAddress = ({ userData, editingSection, handleEditClick, register, control, setValue }: any) => {
   const hasBillingAddressData =
     userData && userData.name && userData.street && userData.postCode && userData.city && userData.country && userData.phoneNu
 
@@ -92,5 +92,3 @@ const ProfileBillingAddress = ({ userData, editingSection, handleEditClick, regi
     </div>
   )
 }
-
-export default ProfileBillingAddress

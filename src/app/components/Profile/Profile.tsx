@@ -1,9 +1,9 @@
 'use client'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import ProfileInfo from '../ProfileInfo/ProfileInfo'
+import { ProfileInfo } from '../ProfileInfo/ProfileInfo'
 
-const Profile = () => {
+export const Profile = () => {
   const router = useRouter()
 
   useEffect(() => {
@@ -26,5 +26,3 @@ const Profile = () => {
     </div>
   )
 }
-
-export default Profile
