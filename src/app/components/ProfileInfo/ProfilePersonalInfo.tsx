@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import { EditIcon } from '@/assets/Icon/EditIcon'
 
-const ProfilePersonalInfo = ({ userData, editingSection, handleEditClick, register, control, setValue, handleSubmit }: any) => {
+export const ProfilePersonalInfo = ({ userData, editingSection, handleEditClick, register, control, setValue, handleSubmit }: any) => {
   return (
     <div>
       <h2 className='text-m flex items-center'>
@@ -59,5 +59,3 @@ const ProfilePersonalInfo = ({ userData, editingSection, handleEditClick, regist
     </div>
   )
 }
-
-export default ProfilePersonalInfo

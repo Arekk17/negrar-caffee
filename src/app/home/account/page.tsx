@@ -1,5 +1,5 @@
 'use client'
-import Profile from '@/app/components/Profile/Profile'
+import { Profile } from '@/app/components/Profile/Profile'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
