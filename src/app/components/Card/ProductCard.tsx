@@ -32,9 +32,10 @@ export const ProductCard: React.FC<ICard> = ({ id, name, image, description, pri
         <div className='flex flex-row justify-evenly my-[10px] items-center'>
           <Typography>{price}</Typography>
           <Button
-            className='w-[120px] py-[10px]'
+            className='w-[120px] py-[10px] text-white'
             label='Zamowić'
             onClick={() => handleOrder()}
+            variant={'classic'}
           />
         </div>
       </Paper>
