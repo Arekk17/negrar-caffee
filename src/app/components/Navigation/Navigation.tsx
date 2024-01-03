@@ -21,7 +21,7 @@ export const Navigation = () => {
   }
 
   useEffect(() => {
-    const home = pathname === '/'
+    const home = pathname === '/home'
     setIsHome(home)
     const userToken = localStorage.getItem('token')
     setIsAuthenticated(!!userToken)
