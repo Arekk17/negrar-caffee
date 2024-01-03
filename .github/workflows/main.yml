@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Check Next.js Build
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  check-nextjs-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,13 +27,7 @@ jobs:
     - name: Check if build was successful
       run: |
         if [ $? -eq 0 ]; then
-          echo "Build successful. Deploying to deploy branch."
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git checkout -b deploy
-          git add .
-          git commit -m "Deploy latest build"
-          git push --set-upstream origin deploy
+          echo "Build successful."
         else
           echo "Build failed. Check the build logs for more information."
           exit 1
