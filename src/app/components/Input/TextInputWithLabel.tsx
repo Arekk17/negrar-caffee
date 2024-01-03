@@ -6,11 +6,12 @@ export type TTextInputWithLabel = {
   placeholder?: string
   errorMessage?: string
   style?: string
+  value?: string
   register: any
 }
 
 export const TextInputWithLabel = forwardRef<HTMLInputElement, TTextInputWithLabel>(
-  ({ type, label, style, placeholder, register, errorMessage, ...rest }, ref) => {
+  ({ type, label, style, placeholder, value, register, errorMessage, ...rest }, ref) => {
     return (
       <div className='flex flex-col'>
         <label className='text-xs font-bold'>{label}</label>
@@ -23,6 +24,7 @@ export const TextInputWithLabel = forwardRef<HTMLInputElement, TTextInputWithLab
           className={`border-solid border-2 border-brown rounded-md pl-2 h-[45px] bg-transparent outline-none ${style}`}
           type={type}
           placeholder={placeholder}
+          value={value}
           ref={ref}
           {...rest}
           {...register}

@@ -18,8 +18,7 @@ export const signInWithEmail = (
   ) => {
     return signInWithEmailAndPassword(auth, email, password)
     .then(async ({ user }) => {
-        const token = await user.getIdToken()
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', user.uid)
         const userData = await fetchUserData(user.uid)
         store.dispatch(loginUser(userData))
         setIsLoggedIn(true)
@@ -54,11 +53,10 @@ export const signInWithEmail = (
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      const token = await user.getIdToken()
-      localStorage.setItem('token', token)
+      localStorage.setItem('token', user.uid)
       const usersDocRef = doc(firestore, 'users', user.uid);
       const userData = await getDoc(usersDocRef);
-      store.dispatch(loginUser)
+      store.dispatch(loginUser(userData))
       if(!userData.exists()){
         await setDoc(usersDocRef, {
           id: user.uid,
