@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material'
+import { Paper, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import Button from '../Buttons/Button'
@@ -16,7 +16,7 @@ export const ProductCard: React.FC<ICard> = ({ id, name, image, description, pri
     console.log(`name: ${name} id: ${id} `)
   }
   return (
-    <Box className='mr-[40px] max-w-[260px] flex-shrink-0 relative'>
+    <div className='mr-[40px] max-w-[260px] flex-shrink-0 relative'>
       <Paper
         className='p-2 h-full bg-brownDark bg-opacity-90 text-white'
         elevation={3}
@@ -39,6 +39,6 @@ export const ProductCard: React.FC<ICard> = ({ id, name, image, description, pri
           />
         </div>
       </Paper>
-    </Box>
+    </div>
   )
 }

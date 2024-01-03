@@ -17,6 +17,7 @@ export const Navigation = () => {
   const handleLogOut = () => {
     signOutUser()
     setIsAuthenticated((prevState) => !prevState)
+    router.push('/home')
   }
 
   useEffect(() => {
@@ -27,9 +28,9 @@ export const Navigation = () => {
   }, [pathname])
 
   return (
-    <nav
-      className={`absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-20 h-[100px] ${
-        isHome ? 'bg-transparent' : 'navigationBackground text-white'
+    <div
+      className={` p-4 flex justify-between items-center z-20 h-[100px] ${
+        isHome ? 'bg-transparent absolute top-0 left-0 right-0' : ' static navigationBackground text-white z-0'
       } `}
     >
       <div className='ml-[80px]'>
@@ -44,10 +45,10 @@ export const Navigation = () => {
       </div>
       <div className='flex items-center justify-between gap-[46px] mr-[126px]'>
         <Link
-          href='/home/about'
+          href='/home/shop'
           className='text-white no-underline'
         >
-          O nas
+          Sklep
         </Link>
         <Link
           href='/home/menu'
@@ -56,10 +57,10 @@ export const Navigation = () => {
           Menu
         </Link>
         <Link
-          href='/home/product'
+          href='/home/contact'
           className='text-white no-underline'
         >
-          Produkty
+          Kontakt
         </Link>
         <Link
           href='/home/localization'
@@ -91,6 +92,6 @@ export const Navigation = () => {
           />
         )}
       </div>
-    </nav>
+    </div>
   )
 }
