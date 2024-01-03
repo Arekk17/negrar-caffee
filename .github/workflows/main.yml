@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 18.17.0
+        node-version: 18
 
     - name: Install dependencies
       run: yarn install
@@ -33,7 +33,8 @@ jobs:
           git checkout -b deploy
           git add .
           git commit -m "Deploy latest build"
-          git push origin deploy
+          git push --set-upstream origin deploy
         else
           echo "Build failed. Check the build logs for more information."
+          exit 1
         fi
