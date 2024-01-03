@@ -1,6 +1,5 @@
 'use client'
 import React, { useRef } from 'react'
-import { IconButton, Box } from '@mui/material'
 import { menuItem } from '../OurMenu/menuData'
 import { LeftArrow } from '@/assets/Icon/LeftArrow'
 import { RightArrow } from '@/assets/Icon/RightArrow'
@@ -20,28 +19,23 @@ export const CaffeeSlider = () => {
 
   return (
     <>
-      <Box
-        display='flex'
-        alignItems='center'
-        className='flex flex-row items-center mt-[43px] ml-[10px] w-[1155px]'
-      >
-        <IconButton
+      <div className='relative flex items-center mt-[43px] ml-[10px] w-[1155px]'>
+        <button
           onClick={() => scroll('left')}
-          className='absolute left-[135px] z-10 bg-white w-[50px] h-[50px] hover:bg-white'
+          className='absolute left-[-50px] z-10 bg-white w-[50px] h-[50px] hover:bg-white flex items-center justify-center rounded-2xl'
         >
           <LeftArrow />
-        </IconButton>
-        <IconButton
+        </button>
+        <button
           onClick={() => scroll('right')}
-          className='absolute right-[125px] z-10 bg-white w-[50px] h-[50px] hover:bg-white'
+          className='absolute right-[-50px] z-10 bg-white w-[50px] h-[50px] hover:bg-white flex items-center justify-center rounded-2xl'
         >
           <RightArrow />
-        </IconButton>
+        </button>
 
-        <Box
+        <div
           ref={scrollContainerRef}
-          display='flex'
-          overflow='hidden'
+          style={{ display: 'flex', overflow: 'hidden' }}
           className='scroll-container'
         >
           {menuItem.map((item) => (
@@ -54,8 +48,8 @@ export const CaffeeSlider = () => {
               description={item.description}
             />
           ))}
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   )
 }
