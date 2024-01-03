@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail, createUserWithEmailAndPassword, signOut} from "firebase/auth"
 import { auth, firestore, googleProvider } from "./firebase"
 import { doc, getDoc, setDoc } from "firebase/firestore"
-import { loggoutUser, loginUser } from "@/store/authSlice"
+import { loggoutUser, loginUser, userInfo } from "@/store/authSlice"
 import { store } from "@/store/store"
 
 export const fetchUserData = async (userId: string) => {
@@ -19,8 +19,7 @@ export const signInWithEmail = (
     return signInWithEmailAndPassword(auth, email, password)
     .then(async ({ user }) => {
         localStorage.setItem('token', user.uid)
-        const userData = await fetchUserData(user.uid)
-        store.dispatch(loginUser(userData))
+        store.dispatch(loginUser(user.uid))
         setIsLoggedIn(true)
     })
     .catch(({ code }) => {

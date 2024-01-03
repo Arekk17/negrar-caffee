@@ -2,7 +2,8 @@ import { UserSchema } from "@/types/userTypes";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    user: null
+    userInfo: {},
+    currentuser: null
 }
 
 export const userSlice = createSlice({
@@ -10,12 +11,18 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         loginUser: (state, action) => {
-            state.user = action.payload
+            state.currentuser = action.payload
         },
         loggoutUser: (state) => {
-            state.user = null
+            state.currentuser = null
         },
+        userInfo: (state, action) => {
+            state.userInfo = action.payload
+        },
+        editUser: (state, action) => {
+            state.userInfo = action.payload
+        }
     }
 })
 
-export const {loginUser, loggoutUser} = userSlice.actions
+export const {loginUser, loggoutUser, userInfo, editUser} = userSlice.actions

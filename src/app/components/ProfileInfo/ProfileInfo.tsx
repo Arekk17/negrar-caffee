@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { fetchUserData } from '@/api/authFirebase'
-import { DocumentData } from 'firebase/firestore'
-import { EditIcon } from '@/assets/Icon/EditIcon'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import ProfilePersonalInfo from './ProfilePersonalInfo'
 import ProfileBillingAddress from './ProfileBillingAddress'
+import { editUserData } from '@/api/profileOperation'
+import { useDispatch, useSelector } from 'react-redux'
+import { editUser, userInfo } from '@/store/authSlice'
 
 const ProfileInfo = () => {
+  const dispatch = useDispatch()
   const userId = localStorage.getItem('token') as string | null
-  const [userData, setUserData] = useState<DocumentData | null | undefined>(null)
+  const userData = useSelector((state: any) => state.userSlice.userInfo)
   const [editingSection, setEditingSection] = useState<string | null>(null)
   const { control, handleSubmit, setValue, register } = useForm()
 
@@ -17,7 +19,7 @@ const ProfileInfo = () => {
       try {
         if (userId) {
           const fetchedUserData = await fetchUserData(userId)
-          setUserData(fetchedUserData)
+          dispatch(userInfo(fetchedUserData))
           setValue('name', fetchedUserData?.name || '')
           setValue('phoneNu', fetchedUserData?.phoneNu || '')
           setValue('street', fetchedUserData?.street || '')
@@ -29,12 +31,20 @@ const ProfileInfo = () => {
         console.error('Błąd podczas pobierania danych użytkownika:', error)
       }
     }
-
     fetchData()
-  }, [userId, setValue])
-
-  const onSubmit = (data: any) => {
+  }, [userId, dispatch])
+  console.log(userData)
+  const onSubmit = async (data: any) => {
     console.log('Dane do zapisania:', data)
+    try {
+      if (userId) {
+        await editUserData(userId, data)
+        dispatch(editUser(data))
+        console.log('Dane zaktualizowane pomyślnie')
+      }
+    } catch (error) {
+      console.error('Błąd podczas aktualizacji danych użytkownika:', error)
+    }
     setEditingSection(null)
   }
 
