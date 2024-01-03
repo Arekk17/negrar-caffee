@@ -44,14 +44,14 @@ const ProfilePersonalInfo = ({ userData, editingSection, handleEditClick, regist
                   />
                 )}
               />
-              {!userData.name && <p className='text-red-500'>Proszę podać imię.</p>}
-              {!userData.phoneNu && <p className='text-red-500'>Proszę podać numer telefonu.</p>}
+              {!userData.name && <p className='text-red'>Proszę podać imię.</p>}
+              {!userData.phoneNu && <p className='text-red'>Proszę podać numer telefonu.</p>}
             </>
           ) : (
             <>
               <p>{userData?.email}</p>
-              {userData?.name ? <p>{userData?.name}</p> : <p className='text-red-500'>Brak danych: proszę podać imię.</p>}
-              {userData?.phoneNu ? <p>{userData?.phoneNu}</p> : <p className='text-red-500'>Brak danych: proszę podać numer telefonu.</p>}
+              {userData?.name ? <p>{userData?.name}</p> : <p className='text-red'>Brak danych: proszę podać imię.</p>}
+              {userData?.phoneNu ? <p>{userData?.phoneNu}</p> : <p className='text-red'>Brak danych: proszę podać numer telefonu.</p>}
             </>
           )}
         </div>
