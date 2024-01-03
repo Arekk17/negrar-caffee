@@ -21,6 +21,7 @@ const Landing = () => {
           className='w-[330px] py-[27px] px-[60px] text-[24px]'
           onClick={handleClickButton}
           label='Zamów teraz'
+          variant={'classic'}
         />
       </div>
     </div>
