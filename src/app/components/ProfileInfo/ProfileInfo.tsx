@@ -33,7 +33,7 @@ const ProfileInfo = () => {
     }
     fetchData()
   }, [userId, dispatch])
-  console.log(userData)
+
   const onSubmit = async (data: any) => {
     console.log('Dane do zapisania:', data)
     try {
