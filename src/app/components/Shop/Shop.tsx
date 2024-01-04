@@ -7,13 +7,13 @@ import { addToBasket } from '@/store/shopSLice'
 
 export const Shop = () => {
   const dispatch = useDispatch()
-  const handleOrderClick = (id: number, name: string, price: number) => {
+  const handleOrderClick = (id: number, name: string, price: number, image: any) => {
     dispatch(
       addToBasket({
         id,
         name,
         price,
-        image: '',
+        image,
         quantity: 0,
       }),
     )
@@ -30,7 +30,7 @@ export const Shop = () => {
             name={name}
             image={image}
             price={`${price} zł`}
-            handleOrder={() => handleOrderClick(id, name, price)}
+            handleOrder={() => handleOrderClick(id, name, price, image)}
           />
         ))}
       </div>

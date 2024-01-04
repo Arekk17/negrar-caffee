@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 const Landing = () => {
   const router = useRouter()
   const handleClickButton = () => {
-    router.push('/shop')
+    router.push('/home/shop')
   }
   return (
     <div className='landingBackground relative h-screen text-white flex justify-start items-center'>
