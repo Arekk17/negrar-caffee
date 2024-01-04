@@ -1,0 +1,60 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
+
+interface ShopState {
+  basket: Product[];
+}
+
+const initialState: ShopState = {
+  basket: [],
+};
+
+export const shopSlice = createSlice({
+  name: 'shop',
+  initialState,
+  reducers: {
+    addToBasket: (state, action: PayloadAction<Product>) => {
+      const { id, name, price, image } = action.payload;
+      const existingProduct = state.basket.find(product => product.id === id);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+        existingProduct.price += price;
+      } else {
+        state.basket.push({ id, name, price, image, quantity: 1 });
+      }
+    },
+    editBasket: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
+      const { id, quantity } = action.payload;
+      const existingProduct = state.basket.find(product => product.id === id);
+
+      if (existingProduct) {
+        const priceDifference = (quantity - existingProduct.quantity) * existingProduct.price;
+        existingProduct.quantity = quantity;
+        state.basket.forEach(product => {
+          if (product.id !== id) {
+            product.price += priceDifference;
+          }
+        });
+      }
+    },
+    removeFromBasket: (state, action: PayloadAction<{ id: number }>) => {
+      const { id } = action.payload;
+      const removedProduct = state.basket.find(product => product.id === id);
+
+      if (removedProduct) {
+        state.basket = state.basket.filter(product => product.id !== id);
+      }
+    },
+  },
+});
+
+
+export const { addToBasket, editBasket, removeFromBasket } = shopSlice.actions;
