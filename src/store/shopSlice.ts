@@ -26,6 +26,7 @@ export const shopSlice = createSlice({
 
       if (existingProduct) {
         existingProduct.quantity += 1;
+        existingProduct.price += price;
       } else {
         state.basket.push({ id, name, price, image, quantity: 1 });
       }
@@ -35,14 +36,25 @@ export const shopSlice = createSlice({
       const existingProduct = state.basket.find(product => product.id === id);
 
       if (existingProduct) {
+        const priceDifference = (quantity - existingProduct.quantity) * existingProduct.price;
         existingProduct.quantity = quantity;
+        state.basket.forEach(product => {
+          if (product.id !== id) {
+            product.price += priceDifference;
+          }
+        });
       }
     },
     removeFromBasket: (state, action: PayloadAction<{ id: number }>) => {
       const { id } = action.payload;
-      state.basket = state.basket.filter(product => product.id !== id);
+      const removedProduct = state.basket.find(product => product.id === id);
+
+      if (removedProduct) {
+        state.basket = state.basket.filter(product => product.id !== id);
+      }
     },
   },
 });
+
 
 export const { addToBasket, editBasket, removeFromBasket } = shopSlice.actions;
