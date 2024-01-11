@@ -6,12 +6,16 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import Button from '../Buttons/Button'
 import { signOutUser } from '@/api/authFirebase'
+import { BasketIcon } from '@/assets/Icon/BasketIcon'
+import { useSelector } from 'react-redux'
 
 export const Navigation = () => {
   const pathname = usePathname()
   const router = useRouter()
+  const basket = useSelector((state: any) => state.shopSlice.basket)
   const [isHome, setIsHome] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  let quantityBasket = basket.length
 
   const handleLogIn = () => router.push('/home/signin')
   const handleLogOut = () => {
@@ -67,6 +71,15 @@ export const Navigation = () => {
           className='text-white no-underline'
         >
           Lokalizacja
+        </Link>
+        <Link
+          href='/home/shop/basket'
+          className='text-white no-underline relative'
+        >
+          <BasketIcon />
+          <span className='bg-white text-brownDark absolute w-4 h-4 rounded-md flex items-center justify-center z-10 top-5 right-0'>
+            {quantityBasket}
+          </span>
         </Link>
         {isAuthenticated ? (
           <>

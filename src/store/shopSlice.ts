@@ -10,10 +10,12 @@ interface Product {
 
 interface ShopState {
   basket: Product[];
+  summaryOrder: any[]
 }
 
 const initialState: ShopState = {
   basket: [],
+  summaryOrder: [],
 };
 
 export const shopSlice = createSlice({
@@ -26,7 +28,6 @@ export const shopSlice = createSlice({
 
       if (existingProduct) {
         existingProduct.quantity += 1;
-        existingProduct.price += price;
       } else {
         state.basket.push({ id, name, price, image, quantity: 1 });
       }
@@ -36,25 +37,34 @@ export const shopSlice = createSlice({
       const existingProduct = state.basket.find(product => product.id === id);
 
       if (existingProduct) {
-        const priceDifference = (quantity - existingProduct.quantity) * existingProduct.price;
         existingProduct.quantity = quantity;
-        state.basket.forEach(product => {
-          if (product.id !== id) {
-            product.price += priceDifference;
-          }
-        });
       }
     },
-    removeFromBasket: (state, action: PayloadAction<{ id: number }>) => {
-      const { id } = action.payload;
-      const removedProduct = state.basket.find(product => product.id === id);
+    increaseQuantity: (state, action: PayloadAction<number>) => {
+      const productId = action.payload;
+      const existingProduct = state.basket.find(product => product.id === productId);
 
-      if (removedProduct) {
-        state.basket = state.basket.filter(product => product.id !== id);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
       }
     },
+    
+    decreaseQuantity: (state, action: PayloadAction<number>) => {
+      const productId = action.payload;
+      const existingProduct = state.basket.find(product => product.id === productId);
+
+      if (existingProduct && existingProduct.quantity > 1) {
+        existingProduct.quantity -= 1;
+      }
+    },
+    removeFromBasket: (state, action: PayloadAction<number>) => {
+      const id  = action.payload;
+      state.basket = state.basket.filter(product => product.id !== id);
+    },
+    addSummaryOrder: (state, action: PayloadAction<any>) => {
+      state.summaryOrder.push(action.payload);
+    }
   },
 });
 
-
-export const { addToBasket, editBasket, removeFromBasket } = shopSlice.actions;
+export const { addToBasket, editBasket, increaseQuantity, decreaseQuantity, removeFromBasket, addSummaryOrder } = shopSlice.actions;

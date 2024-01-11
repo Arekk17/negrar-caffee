@@ -3,7 +3,7 @@ import React from 'react'
 import { productData } from '@/api/productDataMock'
 import { ProductCard } from '../Card/ProductCard'
 import { useDispatch } from 'react-redux'
-import { addToBasket } from '@/store/shopSLice'
+import { addToBasket } from '@/store/shopSlice'
 
 export const Shop = () => {
   const dispatch = useDispatch()
