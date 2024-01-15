@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BasketCard } from '../Card/BasketCard'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
@@ -11,6 +11,7 @@ import { addSummaryOrder } from '@/store/shopSlice'
 
 export const Basket = () => {
   const dispatch = useDispatch()
+  const [emptyBasket, setEmptyBasket] = useState<boolean>(false)
   const productBasket = useSelector((state: any) => state.shopSlice.basket)
   const total = calculateTotal(productBasket)
   const totalWithDelivery = total + 9
@@ -20,9 +21,12 @@ export const Basket = () => {
     formState: { errors },
   } = useForm()
 
+  useEffect(() => {
+    setEmptyBasket(productBasket.length === 0)
+  }, [productBasket])
+
   const onSubmit = (data: any) => {
     console.log(data)
-    // You would handle the submission here, e.g. applying the discount code
   }
 
   const handleCheckout = () => {
@@ -112,6 +116,7 @@ export const Basket = () => {
               variant={'classic'}
               className='text-white py-4 px-8'
               onClick={handleCheckout}
+              disabled={emptyBasket}
             />
           </div>
         </div>
