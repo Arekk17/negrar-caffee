@@ -10,12 +10,12 @@ interface Product {
 
 interface ShopState {
   basket: Product[];
-  summaryOrder: any[]
+  summaryOrder: any | null
 }
 
 const initialState: ShopState = {
   basket: [],
-  summaryOrder: [],
+  summaryOrder: null,
 };
 
 export const shopSlice = createSlice({
@@ -62,7 +62,7 @@ export const shopSlice = createSlice({
       state.basket = state.basket.filter(product => product.id !== id);
     },
     addSummaryOrder: (state, action: PayloadAction<any>) => {
-      state.summaryOrder.push(action.payload);
+      state.summaryOrder = action.payload;
     }
   },
 });

@@ -19,21 +19,19 @@ export const ProfileInfo = () => {
     const fetchData = async () => {
       try {
         if (userId) {
-          const fetchedUserData = await fetchUserData(userId)
-          dispatch(userInfo(fetchedUserData))
-          setValue('name', fetchedUserData?.name || '')
-          setValue('phoneNu', fetchedUserData?.phoneNu || '')
-          setValue('street', fetchedUserData?.street || '')
-          setValue('postCode', fetchedUserData?.postCode || '')
-          setValue('city', fetchedUserData?.city || '')
-          setValue('country', fetchedUserData?.country || '')
+          setValue('name', userData?.name || '')
+          setValue('phoneNu', userData?.phoneNu || '')
+          setValue('street', userData?.street || '')
+          setValue('postCode', userData?.postCode || '')
+          setValue('city', userData?.city || '')
+          setValue('country', userData?.country || '')
         }
       } catch (error) {
         console.error('Błąd podczas pobierania danych użytkownika:', error)
       }
     }
     fetchData()
-  }, [userId, dispatch])
+  }, [userId])
 
   const onSubmit = async (data: any) => {
     console.log('Dane do zapisania:', data)
