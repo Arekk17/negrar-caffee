@@ -15,6 +15,7 @@ export const userSlice = createSlice({
         },
         loggoutUser: (state) => {
             state.currentUser = null
+            state.userInfo = {}
         },
         userInfo: (state, action) => {
             state.userInfo = action.payload

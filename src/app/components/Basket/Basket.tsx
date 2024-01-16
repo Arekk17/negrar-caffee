@@ -8,13 +8,17 @@ import { useForm } from 'react-hook-form'
 import { calculateTotal } from '@/helper/calculateTotal'
 import { generateOrderNumber } from '@/helper/generateOrderNumber'
 import { addSummaryOrder } from '@/store/shopSlice'
+import { checkPromotion } from '@/api/orderFirebase'
+import { useRouter } from 'next/navigation'
 
 export const Basket = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
   const [emptyBasket, setEmptyBasket] = useState<boolean>(false)
   const productBasket = useSelector((state: any) => state.shopSlice.basket)
   const total = calculateTotal(productBasket)
   const totalWithDelivery = total + 9
+  const [finalPrice, setFinalPrice] = useState<number>(totalWithDelivery)
   const {
     register,
     handleSubmit,
@@ -26,7 +30,14 @@ export const Basket = () => {
   }, [productBasket])
 
   const onSubmit = (data: any) => {
-    console.log(data)
+    checkPromotion(data.discountCode, total)
+      .then((discountedPrice) => {
+        console.log(`Nowa cena po zastosowaniu promocji: ${discountedPrice}`)
+        setFinalPrice(discountedPrice + 9)
+      })
+      .catch((error) => {
+        console.error(error.message)
+      })
   }
 
   const handleCheckout = () => {
@@ -51,6 +62,7 @@ export const Basket = () => {
     }
     console.log(orderDetails)
     dispatch(addSummaryOrder(orderDetails))
+    router.push('/home/shop/basket/summaryOrder')
   }
 
   return (

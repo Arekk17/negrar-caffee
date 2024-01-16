@@ -11,14 +11,17 @@ import { editUser, userInfo } from '@/store/authSlice'
 export const ProfileInfo = () => {
   const dispatch = useDispatch()
   const userId = typeof window !== 'undefined' ? (localStorage.getItem('token') as string | null) : null
-  const userData = useSelector((state: any) => state.userSlice.userInfo)
   const [editingSection, setEditingSection] = useState<string | null>(null)
   const { control, handleSubmit, setValue, register } = useForm()
+  const userData = useSelector((state: any) => state.userSlice.userInfo)
+  console.log(userData)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (userId) {
+          const fetchedUserData = await fetchUserData(userId)
+          dispatch(userInfo(fetchedUserData))
           setValue('name', userData?.name || '')
           setValue('phoneNu', userData?.phoneNu || '')
           setValue('street', userData?.street || '')
@@ -31,7 +34,7 @@ export const ProfileInfo = () => {
       }
     }
     fetchData()
-  }, [userId])
+  }, [userId, dispatch])
 
   const onSubmit = async (data: any) => {
     console.log('Dane do zapisania:', data)

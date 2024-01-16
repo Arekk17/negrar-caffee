@@ -4,8 +4,7 @@ import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import { EditIcon } from '@/assets/Icon/EditIcon'
 
 export const ProfileBillingAddress = ({ userData, editingSection, handleEditClick, register, control, setValue }: any) => {
-  const hasBillingAddressData =
-    userData && userData.name && userData.street && userData.postCode && userData.city && userData.country && userData.phoneNu
+  const hasBillingAddressData = userData && userData.street && userData.postCode && userData.city && userData.country
 
   return (
     <div>
