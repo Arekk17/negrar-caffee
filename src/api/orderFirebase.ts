@@ -5,7 +5,7 @@ interface PromotionData {
     discountPercent: number;
   }
   
-export const makeOrder = ( userId: any, userData: any, orderData: any ) => {
+export const makeOrder = ( userId: any, userData: any, orderData: any, setMakeOrder: any ) => {
     const orderCollection = collection(firestore, 'order')
     const combinateData = {
         userData:{
@@ -16,7 +16,7 @@ export const makeOrder = ( userId: any, userData: any, orderData: any ) => {
     }
     return setDoc(doc(orderCollection), combinateData)
     .then(() => {
-        console.log('zamowienie zostało złozone')
+        setMakeOrder(`Zamowienie o nr: ${orderData.orderNumber} zostało przyjete do realizacji`)
     })
     .catch((error: any) => {
         console.log('bład złozenia zamowienia', error)

@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Button from '../Buttons/Button'
 import { useRouter } from 'next/navigation'
@@ -7,6 +7,8 @@ import { makeOrder } from '@/api/orderFirebase'
 
 export const SummaryOrder = () => {
   const router = useRouter()
+  const [successMakeOrder, setSuccessMakeOrder] = useState('')
+
   const order = useSelector((state: any) => state.shopSlice.summaryOrder)
   const userId = localStorage.getItem('token')
   console.log(userId)
@@ -23,7 +25,7 @@ export const SummaryOrder = () => {
       ...order,
       items: order.items.map(({ image, ...item }: any) => item),
     }
-    makeOrder(userId, currentUser, newOrder)
+    makeOrder(userId, currentUser, newOrder, setSuccessMakeOrder)
   }
 
   return (
@@ -76,6 +78,11 @@ export const SummaryOrder = () => {
           <p>brak adresu prosze uzupelnic</p>
         )}
       </div>
+      {successMakeOrder && (
+        <div className='w-full flex justify-center py-6'>
+          <p className='text-m font-bold text-green-500'>{successMakeOrder}</p>
+        </div>
+      )}
       <div>
         <Button
           label={'ZŁÓŻ ZAMÓWIENIE'}
