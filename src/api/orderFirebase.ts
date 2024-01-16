@@ -1,6 +1,6 @@
 
 import { firestore } from "./firebase"
-import { collection, doc, getDoc, setDoc,} from "firebase/firestore"
+import { collection, doc, getDoc, setDoc,query, where, getDocs,} from "firebase/firestore"
 interface PromotionData {
     discountPercent: number;
   }
@@ -12,7 +12,9 @@ export const makeOrder = ( userId: any, userData: any, orderData: any, setMakeOr
             userId: userId,
             ...userData,
         },
-        ...orderData,
+        orderData:{
+            ...orderData,
+        }
     }
     return setDoc(doc(orderCollection), combinateData)
     .then(() => {
@@ -35,3 +37,24 @@ export const checkPromotion = (promoCode: string, originalPrice: number) => {
         return discountedPrice;
     })
 }
+
+
+export const fetchAllOrdersFromId = (userId: string) => {
+    const ordersCollection = collection(firestore, "order");
+    const ordersQuery = query(ordersCollection, where("userData.userId", "==", userId));
+    return getDocs(ordersQuery)
+      .then((querySnapshot) => {
+        const orders: any[] = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          if (data.orderData) {
+            orders.push(data.orderData);
+          }
+        });
+        return orders;
+      })
+      .catch((error) => {
+        console.error("Error fetching orders:", error);
+        throw new Error('Error fetching orders');
+      });
+  };
