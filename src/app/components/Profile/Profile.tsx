@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { ProfileInfo } from '../ProfileInfo/ProfileInfo'
+import { HistoryOrder } from '../HistoryOrder/HistoryOrder'
 
 export const Profile = () => {
   const router = useRouter()
@@ -21,7 +22,10 @@ export const Profile = () => {
           <ProfileInfo />
         </div>
         <div className='w-px h-screen bg-brown mx-4' />
-        <div className='flex-1'>historia zamówień</div>
+        <div className='flex-1 overflow-y-auto max-h-[calc(100vh-200px)]'>
+          <h2 className='text-m'>historia zamówień</h2>
+          <HistoryOrder />
+        </div>
       </div>
     </div>
   )

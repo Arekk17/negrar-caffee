@@ -1,4 +1,5 @@
 
+import { Order } from "@/types/orderTypes";
 import { firestore } from "./firebase"
 import { collection, doc, getDoc, setDoc,query, where, getDocs,} from "firebase/firestore"
 interface PromotionData {
@@ -44,7 +45,7 @@ export const fetchAllOrdersFromId = (userId: string) => {
     const ordersQuery = query(ordersCollection, where("userData.userId", "==", userId));
     return getDocs(ordersQuery)
       .then((querySnapshot) => {
-        const orders: any[] = [];
+        const orders: Order[] = [];
         querySnapshot.forEach((doc) => {
           const data = doc.data();
           if (data.orderData) {
