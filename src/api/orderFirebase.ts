@@ -23,7 +23,8 @@ export const makeOrder = ( userId: any, userData: User, orderData: Order, setMak
         setMakeOrder(`Zamowienie o nr: ${orderData.orderNumber} zostało przyjete do realizacji`)
     })
     .catch((error: any) => {
-        console.log('bład złozenia zamowienia', error)
+        setMakeOrder('bład złozenia zamowienia')
+        console.error(error)
     })
 }
 export const checkPromotion = (promoCode: string, originalPrice: number) => {
@@ -33,7 +34,6 @@ export const checkPromotion = (promoCode: string, originalPrice: number) => {
         if(!promoSnapshot.exists()){
             throw new Error('Promotion code is invalid')
         }
-    
         const promoData = promoSnapshot.data() as PromotionData;
         const discountedPrice = originalPrice - (originalPrice * (promoData.discountPercent / 100));
         return discountedPrice;
