@@ -2,15 +2,6 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import { EditIcon } from '@/assets/Icon/EditIcon'
-import { User, UserSchema } from '@/types/userTypes'
-interface ProfileBillingAddressProps {
-  userData: User
-  editingSection: string
-  handleEditClick: (section: string) => void
-  register: any
-  control: any
-  error: any
-}
 
 const BillingAddressForm = ({ control, register }: any) => (
   <>
@@ -64,34 +55,7 @@ const BillingAddressForm = ({ control, register }: any) => (
     />
   </>
 )
-const BillingAddressDisplay = (userData: any) => (
-  <>
-    <p>{userData.name}</p>
-    <p>{userData.email}</p>
-    <p>{userData.street}</p>
-    <p>
-      {userData.postCode} {userData.city}
-    </p>
-    <p>{userData.country}</p>
-    <p>tel:{userData.phoneNumber}</p>
-  </>
-)
-const validateUserData = (userData: User) => {
-  try {
-    UserSchema.parse(userData)
-    return true
-  } catch (error) {
-    console.error('Walidacja danych nie powiodła się:', error)
-    return false
-  }
-}
 export const ProfileBillingAddress = ({ userData, editingSection, handleEditClick, register, control, error }: any) => {
-  const isValidUserData = validateUserData(userData)
-
-  if (!isValidUserData) {
-    return <div>Błędne dane użytkownika</div>
-  }
-
   return (
     <div>
       <h2 className='text-m flex items-center'>
@@ -110,7 +74,14 @@ export const ProfileBillingAddress = ({ userData, editingSection, handleEditClic
         />
       ) : (
         <>
-          <BillingAddressDisplay userData={userData} />
+          <p>{userData.street}</p>
+          <p>
+            {userData.postCode}
+            {userData.city}
+          </p>
+          <p>{userData.country}</p>
+          <p>{userData.name}</p>
+          <p>tel: {userData.phoneNu}</p>
         </>
       )}
     </div>
