@@ -3,10 +3,59 @@ import { Controller } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import { EditIcon } from '@/assets/Icon/EditIcon'
 
-export const ProfileBillingAddress = ({ userData, editingSection, handleEditClick, register, control, setValue }: any) => {
-  const hasBillingAddressData =
-    userData && userData.name && userData.street && userData.postCode && userData.city && userData.country && userData.phoneNu
-
+const BillingAddressForm = ({ control, register }: any) => (
+  <>
+    <Controller
+      name='street'
+      control={control}
+      render={({ field }) => (
+        <TextInputWithLabel
+          register={register}
+          type='text'
+          label='Ulica'
+          {...field}
+        />
+      )}
+    />
+    <Controller
+      name='postCode'
+      control={control}
+      render={({ field }) => (
+        <TextInputWithLabel
+          register={register}
+          type='text'
+          label='Kod pocztowy'
+          {...field}
+        />
+      )}
+    />
+    <Controller
+      name='city'
+      control={control}
+      render={({ field }) => (
+        <TextInputWithLabel
+          register={register}
+          type='text'
+          label='Miasto'
+          {...field}
+        />
+      )}
+    />
+    <Controller
+      name='country'
+      control={control}
+      render={({ field }) => (
+        <TextInputWithLabel
+          register={register}
+          type='text'
+          label='Kraj'
+          {...field}
+        />
+      )}
+    />
+  </>
+)
+export const ProfileBillingAddress = ({ userData, editingSection, handleEditClick, register, control, error }: any) => {
   return (
     <div>
       <h2 className='text-m flex items-center'>
@@ -19,74 +68,20 @@ export const ProfileBillingAddress = ({ userData, editingSection, handleEditClic
         </span>
       </h2>
       {editingSection === 'billingAddress' ? (
-        <>
-          <Controller
-            name='street'
-            control={control}
-            render={({ field }) => (
-              <TextInputWithLabel
-                register={register}
-                type='text'
-                label='Ulica'
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name='postCode'
-            control={control}
-            render={({ field }) => (
-              <TextInputWithLabel
-                register={register}
-                type='text'
-                label='Kod pocztowy'
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name='city'
-            control={control}
-            render={({ field }) => (
-              <TextInputWithLabel
-                register={register}
-                type='text'
-                label='Miasto'
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name='country'
-            control={control}
-            render={({ field }) => (
-              <TextInputWithLabel
-                register={register}
-                type='text'
-                label='Kraj'
-                {...field}
-              />
-            )}
-          />
-        </>
+        <BillingAddressForm
+          control={control}
+          register={register}
+        />
       ) : (
         <>
-          {hasBillingAddressData ? (
-            <>
-              <p>{userData.name}</p>
-              <p>{userData.street}</p>
-              <p>
-                {userData.postCode}
-                {userData.city}
-              </p>
-              <p>{userData.country}</p>
-              <p>tel:{userData.phoneNu}</p>
-            </>
-          ) : (
-            <div>
-              <p>Brak adresu rozliczeniowego, proszę uzupełnić</p>
-            </div>
-          )}
+          <p>{userData.street}</p>
+          <p>
+            {userData.postCode}
+            {userData.city}
+          </p>
+          <p>{userData.country}</p>
+          <p>{userData.name}</p>
+          <p>tel: {userData.phoneNu}</p>
         </>
       )}
     </div>

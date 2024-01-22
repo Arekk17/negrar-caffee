@@ -11,9 +11,10 @@ import { editUser, userInfo } from '@/store/authSlice'
 export const ProfileInfo = () => {
   const dispatch = useDispatch()
   const userId = typeof window !== 'undefined' ? (localStorage.getItem('token') as string | null) : null
-  const userData = useSelector((state: any) => state.userSlice.userInfo)
   const [editingSection, setEditingSection] = useState<string | null>(null)
   const { control, handleSubmit, setValue, register } = useForm()
+  const userData = useSelector((state: any) => state.userSlice.userInfo)
+  console.log(userData)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,12 +22,12 @@ export const ProfileInfo = () => {
         if (userId) {
           const fetchedUserData = await fetchUserData(userId)
           dispatch(userInfo(fetchedUserData))
-          setValue('name', fetchedUserData?.name || '')
-          setValue('phoneNu', fetchedUserData?.phoneNu || '')
-          setValue('street', fetchedUserData?.street || '')
-          setValue('postCode', fetchedUserData?.postCode || '')
-          setValue('city', fetchedUserData?.city || '')
-          setValue('country', fetchedUserData?.country || '')
+          setValue('name', userData?.name || '')
+          setValue('phoneNu', userData?.phoneNu || '')
+          setValue('street', userData?.street || '')
+          setValue('postCode', userData?.postCode || '')
+          setValue('city', userData?.city || '')
+          setValue('country', userData?.country || '')
         }
       } catch (error) {
         console.error('Błąd podczas pobierania danych użytkownika:', error)
@@ -36,7 +37,6 @@ export const ProfileInfo = () => {
   }, [userId, dispatch])
 
   const onSubmit = async (data: any) => {
-    console.log('Dane do zapisania:', data)
     try {
       if (userId) {
         await editUserData(userId, data)

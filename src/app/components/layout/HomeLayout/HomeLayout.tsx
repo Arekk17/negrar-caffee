@@ -8,14 +8,14 @@ import { Map } from '@/app/components/Map/Map'
 
 const HomeLayout = () => {
   return (
-    <div>
+    <>
       <Landing />
       <About />
       <TimeOpen />
       <OurMenu />
       <Opinion />
       <Map />
-    </div>
+    </>
   )
 }
 

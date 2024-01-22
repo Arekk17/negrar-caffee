@@ -7,9 +7,10 @@ interface ButtonProps {
   variant: 'classic' | 'google'
   className?: string
   onClick?: any
+  disabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, disabled }) => {
   const [isClicked, setIsClicked] = useState(false)
 
   const handleButtonClick = () => {
@@ -24,12 +25,15 @@ const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick }) =
 
   return (
     <button
-      className={`rounded-[10px] cursor-pointer ${className} ${isClicked ? 'scale-95' : ''} 
+      className={`rounded-[10px] cursor-pointer ${className} 
+        ${isClicked ? 'scale-95' : ''} 
         ${variant === 'google' ? 'bg-grayDark text-white flex flex-row items-center gap-[30px]' : 'bg-brown '}
+        ${disabled ? 'bg-gray' : ''}
         transition-transform duration-100 ease-out
       `}
       tabIndex={0}
       onClick={handleButtonClick}
+      disabled={disabled}
     >
       {variant === 'google' && (
         <span className='ml-3'>

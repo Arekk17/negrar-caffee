@@ -22,13 +22,13 @@ export const CaffeeSlider = () => {
       <div className='relative flex items-center mt-[43px] ml-[10px] w-[1155px]'>
         <button
           onClick={() => scroll('left')}
-          className='absolute left-[-50px] z-10 bg-white w-[50px] h-[50px] hover:bg-white flex items-center justify-center rounded-2xl'
+          className='absolute left-[-45px] z-10 bg-white bg-opacity-80 w-[50px] h-[50px]  flex items-center justify-center rounded-2xl'
         >
           <LeftArrow />
         </button>
         <button
           onClick={() => scroll('right')}
-          className='absolute right-[-50px] z-10 bg-white w-[50px] h-[50px] hover:bg-white flex items-center justify-center rounded-2xl'
+          className='absolute right-[-45px] z-10 bg-white bg-opacity-80 w-[50px] h-[50px] hover:bg-white flex items-center justify-center rounded-2xl'
         >
           <RightArrow />
         </button>
@@ -40,12 +40,13 @@ export const CaffeeSlider = () => {
         >
           {menuItem.map((item) => (
             <ProductCard
-              id={item.id}
+              className='mr-[40px]'
               key={item.id}
               name={item.name}
               image={item.image}
               price={item.price}
               description={item.description}
+              handleOrder={() => console.log('x')}
             />
           ))}
         </div>

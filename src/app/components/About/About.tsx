@@ -9,12 +9,12 @@ const About = () => {
   return (
     <div className='aboutBackground w-full h-screen flex justify-center items-center'>
       <div className='flex flex-col items-end justify-center w-full mr-[100px]'>
-        <h2 className='text-m text-left mr-[60px]'>Welcome to Bartons incredibly</h2>
+        <h2 className='text-m text-left mr-[60px]'>Witamy w Negrar-Caffee</h2>
         <span className='text-[21px] mt-4 max-w-xl mb-[30px]'>
-          Your best local coffee. In addition to delicious sandwiches and cakes and hot dish of the day,
+          Twoja najlepsza lokalna kawa. Oprócz pysznych kanapek i ciast oraz gorącego dania dnia,
         </span>
         <Button
-          className='w-[180px] py-[10px] px-[40px]'
+          className='w-[180px] py-[10px] px-[40px] text-white'
           label={'View more'}
           onClick={handleClickButton}
           variant={'classic'}
