@@ -11,7 +11,6 @@ export const SummaryOrder = () => {
 
   const order = useSelector((state: any) => state.shopSlice.summaryOrder)
   const userId = localStorage.getItem('token')
-  console.log(userId)
   const currentUser = useSelector((state: any) => state.userSlice.userInfo)
 
   useEffect(() => {

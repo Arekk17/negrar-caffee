@@ -28,8 +28,6 @@ export const HistoryOrder = () => {
 
   const handleViewProducts = (orderNumber: string) =>
     setViewedOrderNumber((prevOrderNumber) => (prevOrderNumber === orderNumber ? null : orderNumber))
-
-  console.log(orders)
   return (
     <div className='container mx-auto py-4'>
       <div className='shadow overflow-y:scroll sm:rounded-lg'>
