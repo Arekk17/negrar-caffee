@@ -10,7 +10,7 @@ export const SummaryOrder = () => {
   const [successMakeOrder, setSuccessMakeOrder] = useState('')
 
   const order = useSelector((state: any) => state.shopSlice.summaryOrder)
-  const userId = localStorage.getItem('token')
+  const userId = typeof window !== 'undefined' ? (localStorage.getItem('token') as string | null) : null
   const currentUser = useSelector((state: any) => state.userSlice.userInfo)
 
   useEffect(() => {
