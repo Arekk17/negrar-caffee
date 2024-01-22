@@ -1,3 +1,4 @@
+import { Order } from "@/types/orderTypes";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Product {
@@ -61,7 +62,7 @@ export const shopSlice = createSlice({
       const id  = action.payload;
       state.basket = state.basket.filter(product => product.id !== id);
     },
-    addSummaryOrder: (state, action: PayloadAction<any>) => {
+    addSummaryOrder: (state, action: PayloadAction<Order>) => {
       state.summaryOrder = action.payload;
     }
   },

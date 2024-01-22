@@ -26,9 +26,8 @@ export const HistoryOrder = () => {
     fetchOrders()
   }, [])
 
-  const handleViewProducts = (orderNumber: string) => {
+  const handleViewProducts = (orderNumber: string) =>
     setViewedOrderNumber((prevOrderNumber) => (prevOrderNumber === orderNumber ? null : orderNumber))
-  }
 
   console.log(orders)
   return (

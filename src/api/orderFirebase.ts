@@ -2,11 +2,12 @@
 import { Order } from "@/types/orderTypes";
 import { firestore } from "./firebase"
 import { collection, doc, getDoc, setDoc,query, where, getDocs,} from "firebase/firestore"
+import { User } from "@/types/userTypes";
 interface PromotionData {
     discountPercent: number;
   }
   
-export const makeOrder = ( userId: any, userData: any, orderData: any, setMakeOrder: any ) => {
+export const makeOrder = ( userId: any, userData: User, orderData: Order, setMakeOrder: any ) => {
     const orderCollection = collection(firestore, 'order')
     const combinateData = {
         userData:{

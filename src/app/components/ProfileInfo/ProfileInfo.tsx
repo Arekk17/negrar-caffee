@@ -37,7 +37,6 @@ export const ProfileInfo = () => {
   }, [userId, dispatch])
 
   const onSubmit = async (data: any) => {
-    console.log('Dane do zapisania:', data)
     try {
       if (userId) {
         await editUserData(userId, data)
