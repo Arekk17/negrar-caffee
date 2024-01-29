@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
-import Button from '../Buttons/Button'
+import { Button } from '../Buttons/Button'
 import Link from 'next/link'
 import { signUpWithEmail } from '@/api/authFirebase'
 import { useRouter } from 'next/navigation'

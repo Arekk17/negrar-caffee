@@ -10,7 +10,7 @@ interface ButtonProps {
   disabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, disabled }) => {
+export const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, disabled }) => {
   const [isClicked, setIsClicked] = useState(false)
 
   const handleButtonClick = () => {
@@ -44,5 +44,3 @@ const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, dis
     </button>
   )
 }
-
-export default Button

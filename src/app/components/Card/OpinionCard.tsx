@@ -1,5 +1,5 @@
 import React from 'react'
-import { opinionsData } from './opinionData'
+import { opinionsData } from '../../../api/opinionData'
 import { Stars } from '../Opinions/Star'
 export const OpinionCard = () => {
   return (

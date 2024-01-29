@@ -1,14 +1,13 @@
 'use client'
 import React from 'react'
-import Button from '../Buttons/Button'
+import { Button } from '../Buttons/Button'
 import { useRouter } from 'next/navigation'
 
-const Landing = () => {
+export const Landing = () => {
   const router = useRouter()
   const handleClickButton = () => {
     router.push('/home/shop')
   }
-
   return (
     <div className='landingBackground relative h-screen text-white flex justify-center items-center px-4 md:px-10 lg:justify-start lg:px-20'>
       <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-30'></div>
@@ -28,5 +27,3 @@ const Landing = () => {
     </div>
   )
 }
-
-export default Landing

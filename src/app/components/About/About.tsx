@@ -2,9 +2,9 @@
 import React from 'react'
 import Image from 'next/image'
 import coffee from '@/assets/pngwing.com (1).png'
-import Button from '../Buttons/Button'
+import { Button } from '../Buttons/Button'
 
-const About = () => {
+export const About = () => {
   const handleClickButton = () => {
     console.log('click')
   }
@@ -31,5 +31,3 @@ const About = () => {
     </div>
   )
 }
-
-export default About

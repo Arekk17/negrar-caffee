@@ -24,7 +24,6 @@ const MenuItem = ({ category, items }: any) => (
     ))}
   </div>
 )
-
 export const Menu = () => {
   return (
     <div className='signinBackground w-full h-full '>

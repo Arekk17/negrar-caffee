@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { menuItem } from '../OurMenu/menuData'
+import { menuItem } from '../../../api/menuData'
 import { LeftArrow } from '@/assets/Icon/LeftArrow'
 import { RightArrow } from '@/assets/Icon/RightArrow'
 import { ProductCard } from '../Card/ProductCard'

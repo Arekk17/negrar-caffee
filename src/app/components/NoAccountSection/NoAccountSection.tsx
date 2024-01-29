@@ -1,11 +1,11 @@
 'use client'
 import Link from 'next/link'
 import React from 'react'
-import Button from '../Buttons/Button'
+import { Button } from '../Buttons/Button'
 import { signInWithGoogle } from '@/api/authFirebase'
 import { useRouter } from 'next/navigation'
 
-const NoAccountSection = () => {
+export const NoAccountSection = () => {
   const router = useRouter()
   const handleGoogleSignIn = async () => {
     try {
@@ -37,5 +37,3 @@ const NoAccountSection = () => {
     </>
   )
 }
-
-export default NoAccountSection

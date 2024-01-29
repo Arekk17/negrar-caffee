@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import Button from '../Buttons/Button'
+import { Button } from '../Buttons/Button'
 import { useRouter } from 'next/navigation'
 import { makeOrder } from '@/api/orderFirebase'
 
