@@ -78,10 +78,15 @@ export const signInWithEmail = (
       })
       .catch((error) => {
         console.error('Error sending password reset email:', error);
-        setResetEmailError('Error sending password reset email');
+        if (error.code === 'auth/user-not-found') {
+          setResetEmailError('Nie ma konta z takim adresem email');
+        } else {
+          setResetEmailError('Error sending password reset email');
+        }
         throw error;
       });
   };
+  
 
 
 export const signUpWithEmail = (name: string, email: string, phoneNu: string, password: string, setLoginErrors: (n: string) => void,) => {

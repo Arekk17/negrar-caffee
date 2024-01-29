@@ -1,21 +1,29 @@
 'use client'
 import React from 'react'
-import Button from '../Buttons/Button'
+import Image from 'next/image'
+import coffee from '@/assets/pngwing.com (1).png'
+import { Button } from '../Buttons/Button'
 
-const About = () => {
+export const About = () => {
   const handleClickButton = () => {
     console.log('click')
   }
   return (
-    <div className='aboutBackground w-full h-screen flex justify-center items-center'>
-      <div className='flex flex-col items-end justify-center w-full mr-[100px]'>
-        <h2 className='text-m text-left mr-[60px]'>Witamy w Negrar-Caffee</h2>
-        <span className='text-[21px] mt-4 max-w-xl mb-[30px]'>
-          Twoja najlepsza lokalna kawa. Oprócz pysznych kanapek i ciast oraz gorącego dania dnia,
-        </span>
+    <div className='signinBackground w-full h-screen flex flex-col-reverse md:flex-row justify-center items-center p-4 md:p-10'>
+      <div className='flex flex-1 justify-start items-center'>
+        <Image
+          src={coffee}
+          alt='Coffee'
+          width={800}
+          height={600}
+        />
+      </div>
+      <div className='flex flex-1 flex-col md:items-start justify-center'>
+        <h2 className='text-l mb-4'>Witamy w Negrar-Caffee</h2>
+        <span className='text-s mt-4 mb-6'>Twoja najlepsza lokalna kawa. Oprócz pysznych kanapek i ciast oraz gorącego dania dnia,</span>
         <Button
-          className='w-[180px] py-[10px] px-[40px] text-white'
-          label={'View more'}
+          className='py-[10px] px-[40px] text-white'
+          label={'Zobacz Więcej'}
           onClick={handleClickButton}
           variant={'classic'}
         />
@@ -23,5 +31,3 @@ const About = () => {
     </div>
   )
 }
-
-export default About

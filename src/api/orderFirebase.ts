@@ -3,6 +3,8 @@ import { Order } from "@/types/orderTypes";
 import { firestore } from "./firebase"
 import { collection, doc, getDoc, setDoc,query, where, getDocs,} from "firebase/firestore"
 import { User } from "@/types/userTypes";
+import { clearBasket } from "@/store/shopSlice";
+import { store } from "@/store/store";
 interface PromotionData {
     discountPercent: number;
   }
@@ -21,6 +23,7 @@ export const makeOrder = ( userId: any, userData: User, orderData: Order, setMak
     return setDoc(doc(orderCollection), combinateData)
     .then(() => {
         setMakeOrder(`Zamowienie o nr: ${orderData.orderNumber} zostało przyjete do realizacji`)
+        store.dispatch(clearBasket())
     })
     .catch((error: any) => {
         setMakeOrder('bład złozenia zamowienia')

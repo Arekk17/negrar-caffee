@@ -16,7 +16,7 @@ export const TextInputWithLabel = forwardRef<HTMLInputElement, TTextInputWithLab
       <div className='flex flex-col'>
         <label className='text-xs font-bold'>{label}</label>
         {type == 'tel' && (
-          <div className='w-[45px] h-[45px] bg-brown flex items-center justify-center absolute z-10 bottom-0 rounded-md text-white'>
+          <div className='w-[45px] h-[45px] bg-brown flex items-center justify-center absolute z-10 md:bottom-0 bottom-[63px] rounded-md text-white'>
             +48
           </div>
         )}

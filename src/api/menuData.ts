@@ -1,4 +1,4 @@
-import cappucinoImage from '../../../assets/cappucino.png';
+import cappucinoImage from '@/assets/cappucino.png';
 
 export const menuItem = [
   {
