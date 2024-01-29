@@ -7,11 +7,14 @@ import { ProductCard } from '../Card/ProductCard'
 
 export const CaffeeSlider = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    const checkIfMobile = () => window.innerWidth < 768
+    setIsMobile(checkIfMobile())
+
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
+      setIsMobile(checkIfMobile())
     }
 
     window.addEventListener('resize', handleResize)
