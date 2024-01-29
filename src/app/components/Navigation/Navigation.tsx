@@ -124,7 +124,7 @@ export const Navigation = () => {
         ></span>
       </button>
       <div
-        className={`fixed inset-0 transform ${
+        className={`fixed inset-0 transform z-10 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-1000 ease-in-out bg-black bg-opacity-75 flex flex-col items-center space-y-6 pt-20 md:hidden`}
       >
@@ -160,14 +160,14 @@ export const Navigation = () => {
           <Button
             label='Wyloguj'
             onClick={handleLogOut}
-            className='text-lg text-white'
+            className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
             variant={'classic'}
           />
         ) : (
           <Button
             label='Logowanie'
             onClick={() => router.push('/home/signin')}
-            className='text-lg text-white'
+            className='bg-white text-brownDark px-[30px] py-[10px] text-bold'
             variant={'classic'}
           />
         )}
