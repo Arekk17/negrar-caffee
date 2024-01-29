@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import coffee from '@/assets/pngwing.com (1).png'
+import coffee from '@/assets/pngwing.png'
 import { Button } from '../Buttons/Button'
 
 export const About = () => {
