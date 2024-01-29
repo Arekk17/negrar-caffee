@@ -2,9 +2,8 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
-import Button from '../Buttons/Button'
-import { forgetPassword } from '@/api/authFirebase'
-
+import { Button } from '../Buttons/Button'
+import { forgetPassword } from '../../../api/authFirebase'
 export const ForgetPasswordForm = () => {
   const [resetEmailSent, setResetEmailSent] = useState(false)
   const [resetEmailError, setResetEmailError] = useState('')
