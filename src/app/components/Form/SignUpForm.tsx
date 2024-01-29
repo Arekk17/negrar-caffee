@@ -38,10 +38,10 @@ export const SignUpForm = () => {
   }
 
   return (
-    <div className='w-[600px]'>
+    <div className='w-[600px] mx-4'>
       <h2 className='text-l mb-4 text-center'>REJSTRACJA</h2>
       <p className='text-red'>{loginErrors}</p>
-      <div className='mb-4 flex space-x-5'>
+      <div className='flex flex-col md:flex-row md:space-x-5'>
         <div className='flex-1'>
           <Controller
             name='name'
@@ -81,7 +81,7 @@ export const SignUpForm = () => {
           />
         </div>
       </div>
-      <div className='mb-6 flex space-x-5 relative'>
+      <div className='flex flex-col md:flex-row md:space-x-5 relative mb-4'>
         <div className='flex-1'>
           <Controller
             name='phoneNu'
