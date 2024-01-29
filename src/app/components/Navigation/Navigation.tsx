@@ -106,7 +106,7 @@ export const Navigation = () => {
         )}
       </div>
       <button
-        className='w-10 h-10 relative focus:outline-none z-50'
+        className='w-10 h-10 relative focus:outline-none z-50 md:hidden'
         onClick={() => setIsOpen(!isOpen)}
       >
         <span
@@ -123,53 +123,55 @@ export const Navigation = () => {
           } top-1/2`}
         ></span>
       </button>
-      {isOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-75 flex flex-col items-center space-y-6 pt-20 md:hidden'>
-          <Link
-            href='/home/shop'
-            className='text-white text-lg no-underline hover:text-gray-300'
-          >
-            Sklep
-          </Link>
-          <Link
-            href='/home/menu'
-            className='text-white text-lg no-underline hover:text-gray-300'
-          >
-            Menu
-          </Link>
-          <Link
-            href='/home/contact'
-            className='text-white text-lg no-underline hover:text-gray-300'
-          >
-            Kontakt
-          </Link>
-          <Link
-            href='/home/localization'
-            className='text-white text-lg no-underline hover:text-gray-300'
-          >
-            Lokalizacja
-          </Link>
-          <div className='text-white text-lg flex items-center'>
-            <BasketIcon className='ml-2' />
-            <span className='ml-2 bg-red-600 px-2 py-1 rounded-full'>{quantityBasket}</span>
-          </div>
-          {isAuthenticated ? (
-            <Button
-              label='Wyloguj'
-              onClick={handleLogOut}
-              className='text-lg text-white'
-              variant={'classic'}
-            />
-          ) : (
-            <Button
-              label='Logowanie'
-              onClick={() => router.push('/home/signin')}
-              className='text-lg text-white'
-              variant={'classic'}
-            />
-          )}
+      <div
+        className={`fixed inset-0 transform ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        } transition-transform duration-1000 ease-in-out bg-black bg-opacity-75 flex flex-col items-center space-y-6 pt-20 md:hidden`}
+      >
+        <Link
+          href='/home/shop'
+          className='text-white text-lg no-underline hover:text-gray-300'
+        >
+          Sklep
+        </Link>
+        <Link
+          href='/home/menu'
+          className='text-white text-lg no-underline hover:text-gray-300'
+        >
+          Menu
+        </Link>
+        <Link
+          href='/home/contact'
+          className='text-white text-lg no-underline hover:text-gray-300'
+        >
+          Kontakt
+        </Link>
+        <Link
+          href='/home/localization'
+          className='text-white text-lg no-underline hover:text-gray-300'
+        >
+          Lokalizacja
+        </Link>
+        <div className='text-white text-lg flex items-center'>
+          <BasketIcon className='ml-2' />
+          <span className='ml-2 bg-red-600 px-2 py-1 rounded-full'>{quantityBasket}</span>
         </div>
-      )}
+        {isAuthenticated ? (
+          <Button
+            label='Wyloguj'
+            onClick={handleLogOut}
+            className='text-lg text-white'
+            variant={'classic'}
+          />
+        ) : (
+          <Button
+            label='Logowanie'
+            onClick={() => router.push('/home/signin')}
+            className='text-lg text-white'
+            variant={'classic'}
+          />
+        )}
+      </div>
     </div>
   )
 }
