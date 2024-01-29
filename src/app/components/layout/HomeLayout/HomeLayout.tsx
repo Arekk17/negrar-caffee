@@ -4,7 +4,7 @@ import React from 'react'
 import TimeOpen from '@/app/components/TimeOpen/TimeOpen'
 import { OurMenu } from '@/app/components/OurMenu/OurMenu'
 import { Opinion } from '@/app/components/Opinions/Opinion'
-import { Map } from '@/app/components/Map/Map'
+import Map from '@/app/components/Map/Map'
 
 export const HomeLayout = () => {
   return (
