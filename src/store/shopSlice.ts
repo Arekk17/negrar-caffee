@@ -64,8 +64,11 @@ export const shopSlice = createSlice({
     },
     addSummaryOrder: (state, action: PayloadAction<Order>) => {
       state.summaryOrder = action.payload;
-    }
+    },
+    clearBasket: (state) => {
+      state.basket = [];
+    },
   },
 });
 
-export const { addToBasket, editBasket, increaseQuantity, decreaseQuantity, removeFromBasket, addSummaryOrder } = shopSlice.actions;
+export const { addToBasket, editBasket, increaseQuantity, decreaseQuantity, removeFromBasket, addSummaryOrder, clearBasket } = shopSlice.actions;

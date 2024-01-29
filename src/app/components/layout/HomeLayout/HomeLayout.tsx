@@ -1,12 +1,12 @@
-import About from '@/app/components/About/About'
-import Landing from '../../Landing/Landing'
+import { About } from '@/app/components/About/About'
+import { Landing } from '../../Landing/Landing'
 import React from 'react'
 import TimeOpen from '@/app/components/TimeOpen/TimeOpen'
-import OurMenu from '@/app/components/OurMenu/OurMenu'
+import { OurMenu } from '@/app/components/OurMenu/OurMenu'
 import { Opinion } from '@/app/components/Opinions/Opinion'
 import { Map } from '@/app/components/Map/Map'
 
-const HomeLayout = () => {
+export const HomeLayout = () => {
   return (
     <>
       <Landing />
@@ -18,5 +18,3 @@ const HomeLayout = () => {
     </>
   )
 }
-
-export default HomeLayout

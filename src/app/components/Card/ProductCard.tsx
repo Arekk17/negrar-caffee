@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import Button from '../Buttons/Button'
+import { Button } from '../Buttons/Button'
 
 interface ICard {
   className?: string

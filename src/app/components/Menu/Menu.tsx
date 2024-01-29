@@ -24,12 +24,11 @@ const MenuItem = ({ category, items }: any) => (
     ))}
   </div>
 )
-
 export const Menu = () => {
   return (
     <div className='signinBackground w-full h-full '>
       <div className='flex items-center justify-center pt-4'>
-        <h2 className='text-l text-brownDark'>Menu</h2>
+        <h2 className='text-l text-black md:text-brownDark'>Menu</h2>
       </div>
       <div className='w-full p-10 flex flex-wrap justify-center'>
         <div className='w-full md:w-1/3 lg:w-1/3 xl:w-1/3'>
