@@ -33,6 +33,12 @@ export const Footer = () => {
             Produkty
           </Link>
           <Link
+            href='/contact'
+            className='text-white no-underline'
+          >
+            Kontakt
+          </Link>
+          <Link
             href='/localization'
             className='text-white no-underline'
           >
