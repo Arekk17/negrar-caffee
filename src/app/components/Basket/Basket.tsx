@@ -120,7 +120,7 @@ export const Basket = () => {
               <span className='font-bold'>Suma Całkowita</span>
               <span className='text-gray'>(Zawiera podatek Vat)</span>
             </div>
-            <span>{totalWithDelivery}zł</span>
+            <span>{finalPrice}zł</span>
           </div>
           <div className='mt-auto ml-auto mr-auto'>
             <Button

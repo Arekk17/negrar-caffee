@@ -14,7 +14,10 @@ const center = {
 
 const MyGoogleMapComponent = () => {
   return (
-    <div className='w-full p-[50px] bg-[#E3D9D5]'>
+    <div
+      className='w-full p-[50px] bg-[#E3D9D5]'
+      id='location'
+    >
       <div className='relative  border-brown border-8'>
         <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
           <GoogleMap

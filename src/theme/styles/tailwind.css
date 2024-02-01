@@ -23,11 +23,6 @@
     background-size: cover;
     background-position: center;
   }
-  .aboutBackground {
-    background-image: url('../../assets/barista.png');
-    background-size: cover;
-    background-position: center;
-  }
   .timeOpenBackground {
     background-image: url('../../assets/timeOpen.png');
     background-size: cover;

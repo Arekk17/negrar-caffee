@@ -67,7 +67,7 @@ export const Navigation = () => {
           Kontakt
         </Link>
         <Link
-          href='/home/localization'
+          href='#location'
           className='text-white no-underline'
         >
           Lokalizacja

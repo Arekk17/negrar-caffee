@@ -6,12 +6,12 @@ interface ButtonProps {
   label: string
   variant: 'classic' | 'google'
   className?: string
-  onClick?: any
+  onClick?: () => void
   disabled?: boolean
 }
 
 export const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, disabled }) => {
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState<boolean>(false)
 
   const handleButtonClick = () => {
     setIsClicked(true)
