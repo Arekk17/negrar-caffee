@@ -8,9 +8,10 @@ interface ButtonProps {
   className?: string
   onClick?: () => void
   disabled?: boolean
+  type?: any
 }
 
-export const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, disabled }) => {
+export const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, disabled, type }) => {
   const [isClicked, setIsClicked] = useState<boolean>(false)
 
   const handleButtonClick = () => {
