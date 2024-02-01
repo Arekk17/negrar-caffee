@@ -10,18 +10,12 @@ export type TTextInputWithLabel = {
   register: any
 }
 
-export const TextInputWithLabel = forwardRef<HTMLInputElement, TTextInputWithLabel>(
+export const TextAreaWithLabel = forwardRef<HTMLInputElement, TTextInputWithLabel>(
   ({ type, label, style, placeholder, value, register, errorMessage, ...rest }, ref) => {
     return (
       <div className='flex flex-col'>
-        <label className='text-xs font-bold'>{label}</label>
-        {type == 'tel' && (
-          <div className='w-[45px] h-[45px] bg-brown flex items-center  justify-center absolute z-10 md:bottom-0 bottom-[63px] rounded-md text-white'>
-            +48
-          </div>
-        )}
-        <input
-          className={`border-solid border-2 border-brown rounded-md opacity-50 pl-2 h-[45px] bg-transparent outline-none ${style}`}
+        <textarea
+          className={`border-solid border-2 border-brown rounded-md opacity-50 min-h-[200px] max-h-[400px] p-4 bg-transparent outline-none ${style}`}
           type={type}
           placeholder={placeholder}
           value={value}
@@ -35,4 +29,4 @@ export const TextInputWithLabel = forwardRef<HTMLInputElement, TTextInputWithLab
   },
 )
 
-TextInputWithLabel.displayName = 'TextInputWithLabel'
+TextAreaWithLabel.displayName = 'TextAreaWithLabel'
