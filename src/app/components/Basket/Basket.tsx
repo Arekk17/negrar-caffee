@@ -10,6 +10,7 @@ import { generateOrderNumber } from '@/helper/generateOrderNumber'
 import { addSummaryOrder } from '@/store/shopSlice'
 import { checkPromotion } from '@/api/orderFirebase'
 import { useRouter } from 'next/navigation'
+import { currentDate } from '@/helper/currentDate'
 
 export const Basket = () => {
   const dispatch = useDispatch()
@@ -46,14 +47,6 @@ export const Basket = () => {
       return
     }
     const orderNumber = generateOrderNumber()
-    const currentDate = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    })
     const orderDetails = {
       orderNumber: orderNumber,
       items: productBasket,

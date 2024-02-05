@@ -4,11 +4,11 @@ import React, { useState } from 'react'
 
 interface ButtonProps {
   label: string
+  type?: string
   variant: 'classic' | 'google'
   className?: string
   onClick?: () => void
   disabled?: boolean
-  type?: any
 }
 
 export const Button: React.FC<ButtonProps> = ({ label, className, variant, onClick, disabled, type }) => {
