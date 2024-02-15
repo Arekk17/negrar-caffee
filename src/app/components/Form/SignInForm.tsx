@@ -5,24 +5,27 @@ import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import { Button } from '../Buttons/Button'
 import { signInWithEmail } from '@/api/authFirebase'
 import { useRouter } from 'next/navigation'
-interface FormData {
-  email: string
-  password: string
-}
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SignInFormSchema, UserSignInType } from '@/types/userTypes'
+
 export const SignInForm = () => {
   const {
     control,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
-  const [loginErrors, setLoginErrors] = useState('')
+  } = useForm<UserSignInType>({
+    resolver: zodResolver(SignInFormSchema),
+  })
+  const [LoginErrors, setLoginErrors] = useState('')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const router = useRouter()
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: UserSignInType) => {
     try {
-      await signInWithEmail(data.email, data.password, setLoginErrors, setIsLoggedIn)
-      router.push('/home')
+      await signInWithEmail(data, setLoginErrors, setIsLoggedIn)
+      if (isLoggedIn) {
+        router.push('/home')
+      }
     } catch (error) {
       console.error('Login error:', error)
     }
@@ -30,6 +33,9 @@ export const SignInForm = () => {
 
   return (
     <>
+      <div>
+        <p className='text-red text-xs mt-1'>{LoginErrors}</p>
+      </div>
       <div className='mb-4'>
         <Controller
           name='email'
@@ -44,6 +50,7 @@ export const SignInForm = () => {
               type={'email'}
               placeholder={'podaj email'}
               register={register('email')}
+              errorMessage={errors.email && 'Email is required'}
               {...field}
             />
           )}
@@ -63,11 +70,13 @@ export const SignInForm = () => {
               type='password'
               placeholder={'podaj haslo'}
               register={register('password')}
+              errorMessage={errors.password && 'Password is required'}
               {...field}
             />
           )}
         />
       </div>
+
       <Button
         label={'Zaloguj się'}
         variant={'classic'}

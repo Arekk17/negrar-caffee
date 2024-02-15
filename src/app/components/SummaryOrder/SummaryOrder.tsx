@@ -8,8 +8,8 @@ import { makeOrder } from '@/api/orderFirebase'
 export const SummaryOrder = () => {
   const router = useRouter()
   const [successMakeOrder, setSuccessMakeOrder] = useState('')
-
   const order = useSelector((state: any) => state.shopSlice.summaryOrder)
+  console.log(order)
   const userId = typeof window !== 'undefined' ? (localStorage.getItem('token') as string | null) : null
   const currentUser = useSelector((state: any) => state.userSlice.userInfo)
 

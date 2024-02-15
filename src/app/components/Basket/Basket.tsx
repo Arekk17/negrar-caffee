@@ -64,12 +64,14 @@ export const Basket = () => {
         <h2 className='text-l font-bold text-brownDark'>KOSZYK</h2>
       </div>
       <div className='flex w-full justify-center'>
-        <div className='w-1/3'>
+        <div className='w-1/2'>
           {productBasket.length > 0 ? (
             productBasket.map((product: any) => (
-              <div className='mb-4'>
+              <div
+                className='mb-4'
+                key={product.id}
+              >
                 <BasketCard
-                  key={product.id}
                   id={product.id}
                   quantity={product.quantity}
                   title={product.name}

@@ -14,7 +14,6 @@ export const ProfileInfo = () => {
   const [editingSection, setEditingSection] = useState<string | null>(null)
   const { control, handleSubmit, setValue, register } = useForm()
   const userData = useSelector((state: any) => state.userSlice.userInfo)
-  console.log(userData)
 
   useEffect(() => {
     const fetchData = async () => {

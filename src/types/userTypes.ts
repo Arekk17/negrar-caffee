@@ -1,18 +1,25 @@
 import { z } from 'zod';
 
-export const UserSchema = z.object({
-  id: z.string(),
+export const SignInFormSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(3),
+})
+export const UserRegistrationSchema = z.object({
   name: z.string(),
   email: z.string().email(),
-  phoneNumber: z.string().refine(data => /^\d{9,15}$/.test(data), {
-    message: 'Numer telefonu musi zawierać od 9 do 15 cyfr.',
-  }),
-  postCode: z.string().refine(data => /^[0-9a-zA-Z\- ]+$/.test(data), {
-    message: 'Kod pocztowy jest nieprawidłowy.',
-  }),
-  street: z.string(),
-  city: z.string(),
-  country: z.string(),
+  phoneNu: z.string(),
+  password: z.string().min(8),
 });
 
-export type User = z.infer<typeof UserSchema>;
+export const UserDataSchema = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  email: z.string().email(),
+  phoneNumber: z.string(),
+  street: z.string(),
+  country: z.string(),
+  zipCode: z.string(),
+});
+export type UserSignInType = z.infer<typeof SignInFormSchema>
+export type UserDataType = z.infer<typeof UserDataSchema>;
+export type UserRegistrationType = z.infer<typeof UserRegistrationSchema>;

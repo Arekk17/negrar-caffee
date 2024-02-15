@@ -1,18 +1,13 @@
 'use client'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { TextInputWithLabel } from '../Input/TextInputWithLabel'
 import { Button } from '../Buttons/Button'
 import Link from 'next/link'
 import { signUpWithEmail } from '@/api/authFirebase'
 import { useRouter } from 'next/navigation'
-
-interface FormData {
-  email: string
-  name: string
-  phoneNu: string
-  password: string
-}
+import { UserRegistrationSchema, UserRegistrationType } from '../../../types/userTypes'
 
 export const SignUpForm = () => {
   const {
@@ -21,14 +16,14 @@ export const SignUpForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<UserRegistrationType>({
+    resolver: zodResolver(UserRegistrationSchema),
+  })
   const [loginErrors, setLoginErrors] = useState('')
   const router = useRouter()
-  const onSubmit = async (data: FormData) => {
-    const { name, email, phoneNu, password } = data
-
+  const onSubmit = async (data: UserRegistrationType) => {
     try {
-      await signUpWithEmail(name, email, phoneNu, password, setLoginErrors)
+      await signUpWithEmail(data, setLoginErrors)
       router.push('/home/signin')
       reset()
     } catch (error: any) {
@@ -56,6 +51,7 @@ export const SignUpForm = () => {
                 type={'text'}
                 placeholder={'podaj imie i nazwisko'}
                 register={register('name')}
+                errorMessage={errors.name?.message}
                 {...field}
               />
             )}
@@ -75,6 +71,7 @@ export const SignUpForm = () => {
                 type={'email'}
                 placeholder={'podaj email'}
                 register={register('email')}
+                errorMessage={errors.email?.message}
                 {...field}
               />
             )}
@@ -97,6 +94,7 @@ export const SignUpForm = () => {
                 style='pl-[50px]'
                 placeholder={'podaj numer telefonu'}
                 register={register('phoneNu')}
+                errorMessage={errors.phoneNu?.message}
                 {...field}
               />
             )}
@@ -116,6 +114,7 @@ export const SignUpForm = () => {
                 type='password'
                 placeholder={'podaj haslo'}
                 register={register('password')}
+                errorMessage={errors.password?.message}
                 {...field}
               />
             )}

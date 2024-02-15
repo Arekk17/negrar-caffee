@@ -3,6 +3,7 @@ import { auth, firestore, googleProvider } from "./firebase"
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { loggoutUser, loginUser, userInfo } from "@/store/authSlice"
 import { store } from "@/store/store"
+import { UserRegistrationSchema, UserRegistrationType, UserSignInType } from "@/types/userTypes"
 
 export const fetchUserData = async (userId: string) => {
   const usersDocRef = doc(firestore, 'users', userId)
@@ -11,11 +12,11 @@ export const fetchUserData = async (userId: string) => {
 }
 
 export const signInWithEmail = (
-    email: string,
-    password: string,
+    data: UserSignInType,
     setLoginErrors: (n: string) => void,
     setIsLoggedIn: (n: boolean) => void
   ) => {
+    const { email, password } = data
     return signInWithEmailAndPassword(auth, email, password)
     .then(async ({ user }) => {
         localStorage.setItem('token', user.uid)
@@ -89,7 +90,13 @@ export const signInWithEmail = (
   
 
 
-export const signUpWithEmail = (name: string, email: string, phoneNu: string, password: string, setLoginErrors: (n: string) => void,) => {
+export const signUpWithEmail = (data: UserRegistrationType, setLoginErrors: (n: string) => void,) => {
+  const { name, email, password, phoneNu} = data
+  const result = UserRegistrationSchema.safeParse(data);
+  if (!result.success) {
+    setLoginErrors(result.error.message);
+    return;
+  }
   return createUserWithEmailAndPassword(auth, email, password)
   .then(async({user}) => {
     const usersDocRef = doc(firestore, 'users', user.uid);

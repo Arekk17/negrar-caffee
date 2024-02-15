@@ -1,20 +1,7 @@
-import { Order } from "@/types/orderTypes";
+import { OrderType, ProductType, ShopType } from "@/types/orderTypes";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
-
-interface ShopState {
-  basket: Product[];
-  summaryOrder: any | null
-}
-
-const initialState: ShopState = {
+const initialState: ShopType = {
   basket: [],
   summaryOrder: null,
 };
@@ -23,7 +10,7 @@ export const shopSlice = createSlice({
   name: 'shop',
   initialState,
   reducers: {
-    addToBasket: (state, action: PayloadAction<Product>) => {
+    addToBasket: (state, action: PayloadAction<ProductType>) => {
       const { id, name, price, image } = action.payload;
       const existingProduct = state.basket.find(product => product.id === id);
 
@@ -62,7 +49,7 @@ export const shopSlice = createSlice({
       const id  = action.payload;
       state.basket = state.basket.filter(product => product.id !== id);
     },
-    addSummaryOrder: (state, action: PayloadAction<Order>) => {
+    addSummaryOrder: (state, action: PayloadAction<OrderType>) => {
       state.summaryOrder = action.payload;
     },
     clearBasket: (state) => {
