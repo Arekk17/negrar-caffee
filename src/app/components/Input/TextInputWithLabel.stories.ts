@@ -1,31 +1,27 @@
-import React from 'react';
-import { TextInputWithLabel } from './TextInputWithLabel';
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import { JupiterIndexedModal, IJupiterIndexedModal } from './JupiterIndexedModal'
 
-const meta = {
-    title: 'input',
-    component: TextInputWithLabel,
-    parameters: {
-        layout: 'centered'
-    }
-} satisfies Meta<typeof TextInputWithLabel>
+export default {
+  title: 'JupiterIndexedModal',
+  component: JupiterIndexedModal,
+  parameters: {
+    layout: 'centered'
+  }
+} as Meta<typeof JupiterIndexedModal>
 
-export default meta;
-type Story = StoryObj<typeof meta>
+const Template: Story<IJupiterIndexedModal> = args => <JupiterIndexedModal {...args} />
 
-export const Text: Story = {
-    args: {
-        label:'text',
-        type: 'text',
-        placeholder: 'input',
-        register: () => {}, 
-    }
+export const Active = Template.bind({})
+Active.args = {
+  poolIndexed: true,
+  handleClose: () => console.log('Close modal'),
+  open: true
 }
-export const Password: Story = {
-    args: {
-        label:'Password',
-        type: 'passoword',
-        placeholder: 'haslo',
-        register: () => {}, 
-    }
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  poolIndexed: false,
+  handleClose: () => console.log('Close modal'),
+  open: true
 }

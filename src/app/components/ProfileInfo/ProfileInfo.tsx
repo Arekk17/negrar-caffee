@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { ProfilePersonalInfo } from './ProfilePersonalInfo'
 import { ProfileBillingAddress } from './ProfileBillingAddress'
 import { editUserData } from '@/api/profileOperation'
-import { editUser, userInfo } from '@/store/authSlice'
+import { editUser } from '@/store/authSlice'
 
 export const ProfileInfo = () => {
   const dispatch = useDispatch()
@@ -19,8 +19,6 @@ export const ProfileInfo = () => {
     const fetchData = async () => {
       try {
         if (userId) {
-          const fetchedUserData = await fetchUserData(userId)
-          dispatch(userInfo(fetchedUserData))
           setValue('name', userData?.name || '')
           setValue('phoneNu', userData?.phoneNu || '')
           setValue('street', userData?.street || '')

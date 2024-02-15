@@ -14,31 +14,31 @@ export const Footer = () => (
           Home
         </Link>
         <Link
-          href='/about'
+          href='/home/about'
           className='text-white no-underline'
         >
           O nas
         </Link>
         <Link
-          href='/menu'
+          href='/home/menu'
           className='text-white no-underline'
         >
           Menu
         </Link>
         <Link
-          href='/product'
+          href='/home/product'
           className='text-white no-underline'
         >
           Produkty
         </Link>
         <Link
-          href='/contact'
+          href='/home/contact'
           className='text-white no-underline'
         >
           Kontakt
         </Link>
         <Link
-          href='/localization'
+          href='/home/localization'
           className='text-white no-underline'
         >
           Lokalizacja
