@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { fetchUserData } from '@/api/authFirebase'
 import { userInfo } from '@/store/authSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navigation } from '../components/Navigation/Navigation'
 import { Footer } from '../components/Footer/Footer'
 
