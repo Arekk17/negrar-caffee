@@ -58,6 +58,6 @@ export const Footer = () => (
         />
       </div>
     </div>
-    <div className='text-center text-white text-sm mt-10'>© 2023 NegrarCoffe. All Rights Reserved.</div>
+    <div className='text-center text-white text-sm mt-10'>© 2023 NegrarCoffe A.Daszkowski. All Rights Reserved.</div>
   </footer>
 )

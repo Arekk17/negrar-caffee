@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'negrar-caffee',
   description: 'Best caffee',
 }
-
+//test
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
